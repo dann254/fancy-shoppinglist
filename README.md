@@ -1,4 +1,4 @@
-# BLUE-BUDDY-SHOPPING
+# FANCY_SHOPPINGLIST
 This is an innovative shopping list app that allows users to record and share things they want to spend money on. The app keeps track of their shopping lists.
 
 ## the folders contain the html/css designs, UML class diagram and wireframes for the app
