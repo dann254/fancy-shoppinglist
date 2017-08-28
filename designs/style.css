@@ -20,6 +20,13 @@ body{
   background: rgba(0, 0, 0, 0.9);
   overflow: auto;
 }
+.dash-nav{
+  padding-top: 8px;
+  margin-bottom:0;
+  background: black;
+  overflow: auto;
+
+}
 .app-heading {
   display: inline-block;
   width: auto;
@@ -85,6 +92,9 @@ body{
   padding-top: 3%;
   padding-bottom: 3%;
   background: rgba(0, 0, 0, 0.9);
+}
+.content H1{
+  color: white;
 }
 .content H2{
   color: white;
