@@ -139,7 +139,7 @@ body{
   text-align: center;
 }
 .list{
-  background-color: #00688B;
+  background-color: black;
   display: inline-block;
   width:400px;
   min-width: 30%;
@@ -174,8 +174,8 @@ body{
 .list-footer a{
   height: 46px;
   border-top: solid 2px white;
-  background-color: white;
-  color: blue;
+  background-color: black;
+  color: white;
   text-align: center;
   text-decoration: none;
   padding-top: 15px;
