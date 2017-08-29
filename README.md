@@ -21,6 +21,11 @@ This is an innovative shopping list app that allows users to record and share th
 # Deployed on heroku
   https://salty-stream-46784.herokuapp.com/
 
+# running tests.
+  instructions for running tests are available within the test folder.
+
+  *note* travis-ci is set to run th test on this repository
+
 ## the folders contain the html/css designs, UML class diagram and wireframes for the app
 
 ## designs
