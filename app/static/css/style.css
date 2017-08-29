@@ -1,12 +1,18 @@
 /*style for body background image*/
 html {
-background-color: black;
+  -webkit-background-color: black;
+  -moz-background-color: black;
+  -o-background-color: black;
+  -ms-background-color: black;
+  background-color: black;
+  background: black;
 }
 /*style for body*/
 body{
   margin: 0;
   padding: 0;
   height: 100%;
+  width: 100%;
 }
 /*css for nav bar, logo and title*/
 .nav{
