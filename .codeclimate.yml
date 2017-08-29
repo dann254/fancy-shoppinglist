@@ -1,3 +1,5 @@
 engines:
   csslint:
     enabled: false
+notifications:
+  email: false

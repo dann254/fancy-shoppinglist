@@ -1,4 +1,8 @@
 [![Build Status](https://travis-ci.org/dann254/fancy-shoppinglist.svg?branch=flask-basics)](https://travis-ci.org/dann254/fancy-shoppinglist)
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate)
+[![Test Coverage](https://codeclimate.com/github/codeclimate/codeclimate/badges/coverage.svg)](https://codeclimate.com/github/codeclimate/codeclimate/coverage)
+[![Issue Count](https://codeclimate.com/github/codeclimate/codeclimate/badges/issue_count.svg)](https://codeclimate.com/github/codeclimate/codeclimate)
+[![Coverage Status](https://coveralls.io/repos/github/dann254/fancy-shoppinglist/badge.svg?branch=master)](https://coveralls.io/github/dann254/fancy-shoppinglist?branch=master)
 
 # FANCY_SHOPPINGLIST
 This is an innovative shopping list app that allows users to record and share things they want to spend money on. The app keeps track of their shopping lists.
