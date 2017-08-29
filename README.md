@@ -15,7 +15,7 @@ This is an innovative shopping list app that allows users to record and share th
   6. install the requirements in the environment. `pip install -r requirements.txt`
 
 # Running the app on debug mode
-  1. on the `runserver.py` file change line 3 from `app.run` to `app.run(host='127.0.0.1', port=5000, debug=True)`
+  1. on the `runserver.py` file comment out line 4 and uncomment line 6.
   2. `python runserver.py`
 
 # Deployed on heroku
