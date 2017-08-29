@@ -14,8 +14,13 @@ This is an innovative shopping list app that allows users to record and share th
   5. work on the virtual environment you just created. `workon fancy`
   6. install the requirements in the environment. `pip install -r requirements.txt`
 
-# Running the app
-  1. `python runserver.py`
+# Running the app on debug mode
+  1. on the `runserver.py` file change line 3 from `app.run` to `app.run(host='127.0.0.1', port=5000, debug=True)`
+  2. `python runserver.py`
+
+#Deployed on heroku
+  https://salty-stream-46784.herokuapp.com/
+
 ## the folders contain the html/css designs, UML class diagram and wireframes for the app
 
 ## designs
