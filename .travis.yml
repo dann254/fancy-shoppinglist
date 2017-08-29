@@ -12,3 +12,5 @@ after_success:
   coveralls
 env:
   - FLASK_VERSION=0.10.1
+notifications:
+  email: false
