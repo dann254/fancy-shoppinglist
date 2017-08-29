@@ -6,7 +6,7 @@
       <div class="app-heading">
         <ul>
           <li>
-            <a href="index.html"><img src="/static/images/logo.png" alt="logo"></a></li>
+            <a href="/"><img src="/static/images/logo.png" alt="logo"></a></li>
             <li class="app-name">Fancy Shoppinglist</li>
         </ul>
       </div>
@@ -24,11 +24,11 @@
       <!--start of content of the app-->
     <div class="content">
       <h2>Signup</h2>
-      <form class="form-s" action="#" method="post">
-        <input type="text" name="username" value="" placeholder="Username"><br><br>
-        <input type="email" name="email" value="" placeholder="email"><br><br>
-        <input type="password" name="password" value="" placeholder="Password"><br><br>
-        <input type="password" name="cpassword" value="" placeholder="Confirm Password"><br><br>
+      <form class="form-s" action="{{url_for('home.signup')}}" method="post">
+        <input type="text" name="username" value="" placeholder="Username" required><br><br>
+        <input type="email" name="email" value="" placeholder="email" required><br><br>
+        <input type="password" name="password" value="" placeholder="Password" required><br><br>
+        <input type="password" name="cpassword" value="" placeholder="Confirm Password" required><br><br>
         <button type="submit" name="button" class="button">Submit</button>
       </form>
     </div>

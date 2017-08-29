@@ -6,6 +6,6 @@ install:
   - pip install -r requirements.txt
 
 script:
-  "python test/app_test.py"
+  nosetests --with-coverage --cover-package=tests && coverage report
 env:
   - FLASK_VERSION=0.10.1
