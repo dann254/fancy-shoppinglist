@@ -18,7 +18,7 @@ This is an innovative shopping list app that allows users to record and share th
   1. on the `runserver.py` file change line 3 from `app.run` to `app.run(host='127.0.0.1', port=5000, debug=True)`
   2. `python runserver.py`
 
-#Deployed on heroku
+# Deployed on heroku
   https://salty-stream-46784.herokuapp.com/
 
 ## the folders contain the html/css designs, UML class diagram and wireframes for the app
