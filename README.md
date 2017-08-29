@@ -1,3 +1,5 @@
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
+
 # FANCY_SHOPPINGLIST
 This is an innovative shopping list app that allows users to record and share things they want to spend money on. The app keeps track of their shopping lists.
 
