@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/dann254/fancy-shoppinglist.svg?branch=flask-basics)](https://travis-ci.org/dann254/fancy-shoppinglist)
-[![Code Climate](https://codeclimate.com/github/dann254/fancy-shoppinglist/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate)
+[![Code Climate](https://codeclimate.com/github/dann254/fancy-shoppinglist/badges/gpa.svg)](https://codeclimate.com/github/dann254/fancy-shoppinglist/)
 [![Issue Count](https://codeclimate.com/github/dann254/fancy-shoppinglist/badges/issue_count.svg)](https://codeclimate.com/github/dann254/fancy-shoppinglist)
 [![Coverage Status](https://coveralls.io/repos/github/dann254/fancy-shoppinglist/badge.svg?branch=master)](https://coveralls.io/github/dann254/fancy-shoppinglist?branch=master)
 
