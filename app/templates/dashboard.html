@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+    <!--start  of navigation bar. containing logo, app name and tabs-->
+    <div class="dash-nav">
+      <div class="app-heading">
+        <ul>
+          <li>
+            <a href="index.html"><img src="/static/images/logo.png" alt="logo"></a></li>
+            <li class="app-name">Fancy Shoppinglist</li>
+        </ul>
+      </div>
+      <div class="nav-items">
+        <ul>
+          <li><a href="signup.html">Username</a></li>
+          <li><a href="#">Buddies</a></li>
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+
+      </div>
+
+    </div>
+      <!--end of navigation-->
+      <!--start of content of the app-->
+    <div class="dash-content">
+      <div class="list">
+        <div class="list-header">
+          <h2>Shopping lists</h2>
+          <h5>view, add and share your shopping lists here</h5>
+        </div>
+        <div class="list-body">
+
+            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
+            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
+            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
+            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
+            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
+            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
+            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
+            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
+            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
+            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
+        </div>
+        <div class="list-footer">
+            <a href="#">add new</a>
+        </div>
+      </div>
+      <div class="list">
+        <div class="list-header">
+          <h2>Buddies</h2>
+          <h5>View friend's shopping lists and add friends</h5>
+        </div>
+        <div class="list-body">
+        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
+        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
+        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
+        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
+        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
+        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
+        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
+        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
+        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
+        </div>
+        <div class="list-footer">
+            <a href="#">Invite Buddy</a>
+        </div>
+      </div>
+      <div class="list">
+        <div class="list-header">
+          <h2>Shopping Zones</h2>
+          <h5>view and add places you shop at</h5>
+        </div>
+        <div class="list-body">
+        <span class="list-item">Zone </span>
+        <span class="list-item">Zone </span>
+        <span class="list-item">Zone </span>
+        <span class="list-item">Zone </span>
+        <span class="list-item">Zone </span>
+        <span class="list-item">Zone </span>
+
+        </div>
+        <div class="list-footer">
+            <a href="#">add new</a>
+
+        </div>
+      </div>
+
+    </div>
+      <!--end of content-->
+    {% endblock%}

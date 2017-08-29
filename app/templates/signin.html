@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    <!--start  of navigation bar. containing logo, app name and tabs-->
+    <div class="nav">
+      <div class="app-heading">
+        <ul>
+          <li>
+            <a href="index.html"><img src="/static/images/logo.png" alt="logo"></a></li>
+            <li class="app-name">Fancy Shoppinglist</li>
+        </ul>
+      </div>
+      <div class="nav-items">
+        <ul>
+          <li><a href="{{url_for('home.signup')}}">Singup</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contacts</a></li>
+        </ul>
+
+      </div>
+
+    </div>
+      <!--end of navigation-->
+      <!--start of content of the app-->
+    <div class="content">
+      <h2>Signin</h2>
+      <form class="form-s" action="#" method="post">
+        <input type="text" name="username" value="" placeholder="Username"><br><br>
+        <input type="password" name="password" value="" placeholder="Password"><br><br>
+        <button type="submit" name="button" class="button">Submit</button>
+      </form><br><br>
+      <a href="#" id="pass-recovery">forgot password?</a>
+    </div>
+      <!--end of content-->
+
+      {%endblock%}
