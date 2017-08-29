@@ -13,7 +13,9 @@ This is an innovative shopping list app that allows users to record and share th
   4. create a virtual environment. example `mkvirtualenv fancy`
   5. work on the virtual environment you just created. `workon fancy`
   6. install the requirements in the environment. `pip install -r requirements.txt`
-  7. run the app. `python runserver.py`
+
+# Running the app
+  1. `python runserver.py`
 ## the folders contain the html/css designs, UML class diagram and wireframes for the app
 
 ## designs
