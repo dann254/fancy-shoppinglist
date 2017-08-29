@@ -7,7 +7,6 @@ install:
   - pip install -r requirements.txt
 
 script:
-  nosetests --cover-package=test && report cover-package=app_test.py
-  #nosetests --with-coverage --cover-package=test && coverage report cover-package=app_test.py
+  nosetests --with-coverage --cover-package=test && coverage report cover-package=app_test.py
 env:
   - FLASK_VERSION=0.10.1
