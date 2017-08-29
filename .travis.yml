@@ -10,3 +10,5 @@ script:
   nosetests --with-coverage --cover-package=test && coverage report cover-package=app_test.py
 env:
   - FLASK_VERSION=0.10.1
+after_success:
+  coveralls
