@@ -1,3 +1,4 @@
+
 language: python
 python:
   - "3.5"
@@ -6,6 +7,6 @@ install:
   - pip install -r requirements.txt
 
 script:
-  nosetests --with-coverage --cover-package=tests && coverage report
+  nosetests --with-coverage --cover-package=test && coverage report cover-package=app_test.py
 env:
   - FLASK_VERSION=0.10.1
