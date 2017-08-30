@@ -1,6 +1,6 @@
 # Import flask dependencies
 from flask import Blueprint, request, render_template,flash, g, session, redirect, url_for
-from app.user_management import UserRegister
+from app.user_management import UserRegister, FormSubmission
 
 # Define the blueprints
 home = Blueprint('home', __name__)
@@ -21,11 +21,31 @@ def signup():
         password = request.form['password']
         confirm_pass = request.form['cpassword']
         #verify password similarity
-        if UserRegister().verify_password_similarity(password, confirm_pass) == True:
+        #if UserRegister().verify_password_similarity(password, confirm_pass) == True:
+        #    flash('signup success', 'success')
+        #    return redirect(url_for('home.signin'))
+        #else:
+        #    flash('passwords did not match', 'success')
+        #    return render_template('signup.html')
+        form_submit = FormSubmission().after_user_submit_register(username, email, password, confirm_pass)
+        if form_submit == "success":
             flash('signup success', 'success')
             return redirect(url_for('home.signin'))
+        elif form_submit == "blank_entry":
+            flash('Please fill all the fields before submit', 'error')
+            return render_template('signup.html')
+
+        elif form_submit == "password_error":
+            flash('passwords did not match', 'error')
+            return render_template('signup.html')
+        elif form_submit == "username_error":
+            flash('username already exists', 'error')
+            return render_template('signup.html')
+        elif form_submit == "email_error":
+            flash('email already exists', 'error')
+            return render_template('signup.html')
         else:
-            flash('passwords did not match', 'success')
+            flash('nothing happened', 'error')
             return render_template('signup.html')
 
 

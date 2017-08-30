@@ -7,6 +7,9 @@ Flask==0.10.1
 # server
 gunicorn==19.7.1
 
+#other requirements
+
+
 
 # Flask Packages
 # Flask-SQLAlchemy==2.0
