@@ -3,3 +3,9 @@ engines:
     enabled: false
 notifications:
   email: false
+
+Python: true
+ratings:
+  paths:
+  - app/**
+  - test/**
