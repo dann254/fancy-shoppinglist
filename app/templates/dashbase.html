@@ -19,6 +19,28 @@
                 {% endif %}
             {%- endwith %}
         {% endblock %}
+        <!--start  of navigation bar. containing logo, app name and tabs-->
+        <div class="dash-nav">
+          <div class="app-heading">
+            <ul>
+              <li>
+                <a href="index.html"><img src="/static/images/logo.png" alt="logo"></a></li>
+                <li class="app-name">Fancy Shoppinglist</li>
+            </ul>
+          </div>
+          <div class="nav-items">
+            <ul>
+              <li><a href="#">{{username}}</a></li>
+              <li><a href="#">Buddies</a></li>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+
+          </div>
+
+        </div>
+          <!--end of navigation-->
+          <!--start of content of the app-->
       {% block main %}
       {% block content %}
 
