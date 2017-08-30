@@ -1,26 +1,6 @@
-{% extends "base.html" %}
+{% extends "dashbase.html" %}
 {% block content %}
-    <!--start  of navigation bar. containing logo, app name and tabs-->
-    <div class="dash-nav">
-      <div class="app-heading">
-        <ul>
-          <li>
-            <a href="index.html"><img src="/static/images/logo.png" alt="logo"></a></li>
-            <li class="app-name">Fancy Shoppinglist</li>
-        </ul>
-      </div>
-      <div class="nav-items">
-        <ul>
-          <li><a href="signup.html">Username</a></li>
-          <li><a href="#">Buddies</a></li>
-          <li><a href="#">Help</a></li>
-          <li><a href="#">Logout</a></li>
-        </ul>
 
-      </div>
-
-    </div>
-      <!--end of navigation-->
       <!--start of content of the app-->
     <div class="dash-content">
       <div class="list">
@@ -42,7 +22,7 @@
             <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
         </div>
         <div class="list-footer">
-            <a href="#">add new</a>
+            <a href="{{url_for('dash.add_shoppinglist')}}">add new</a>
         </div>
       </div>
       <div class="list">

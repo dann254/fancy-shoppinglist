@@ -1,6 +1,7 @@
 # Import flask dependencies
 from flask import Blueprint, request, render_template,flash, g, session, redirect, url_for
 from app.user_management import UserRegister, FormSubmission
+from app.mock_data import User
 
 # Define the blueprints
 home = Blueprint('home', __name__)
@@ -73,4 +74,9 @@ def signin():
 #this route links to the dashboard
 @dash.route('/dashboard/', methods=['GET','POST'])
 def dashboard():
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', username=User.user_name)
+
+#adding new shopping lists
+@dash.route('/dashboard/add-shoppinglist/', methods=['GET','POST'])
+def add_shoppinglist():
+    return render_template('add_shoppinglist.html')
