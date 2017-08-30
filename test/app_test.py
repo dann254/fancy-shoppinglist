@@ -1,7 +1,7 @@
 #this is the test form.
 #some data like login and register are verified from mock_data.py
 import unittest
-from app.user_management import UserRegister, FormSubmission, UserLogin
+from app.user_management import UserRegister, FormSubmission, UserLogin, AddList
 
 class RegisterTest(unittest.TestCase):
     #test 1
@@ -53,7 +53,7 @@ class LoginTest(unittest.TestCase):
         self.assertEqual(True, result)
     #test 12
     def login_blanks_fail_test(self):
-        result = UserLogin().check_for_blanks("", "password",)
+        result = UserLogin().check_for_blanks("", "password")
         self.assertEqual(False, result)
     #test 13
     def sucessful_login_test(self):
@@ -62,6 +62,32 @@ class LoginTest(unittest.TestCase):
     #test 14
     def failed_login_test(self):
         result = FormSubmission().after_login_submit("user2","password")
+        self.assertFalse("success"==result)
+
+class ShoppinglistTest(unittest.TestCase):
+    #test 15
+    def addlist_blanks_success_test(self):
+        result = AddList().check_for_blanks("name")
+        self.assertEqual(True, result)
+    #test 16
+    def addlists_blanks_fail_test(self):
+        result = AddList().check_for_blanks("")
+        self.assertEqual(False, result)
+    #test 17
+    def non_existinglist_test(self):
+        result = AddList().check_for_duplicate("clothes")
+        self.assertEqual(True, result)
+    #test 18
+    def existinglist_test(self):
+        result = AddList().check_for_duplicate("kitchenware")
+        self.assertEqual(False, result)
+    #test 19
+    def successful_addlist_test(self):
+        result = FormSubmission().after_add_list("list2")
+        self.assertEqual("success",result)
+    #test 20
+    def failed_addlist_test(self):
+        result = FormSubmission().after_add_list("kitchenware")
         self.assertFalse("success"==result)
 
 if __name__ == '__main__':

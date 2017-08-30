@@ -1,7 +1,7 @@
 # this file contains all the required functions to run the app
 
 #import test data
-from app.mock_data import User
+from app.mock_data import User, ShopList
 
 class FormSubmission(object):
     def after_user_submit_register(self, username, email, password, confirm_pass):
@@ -28,7 +28,15 @@ class FormSubmission(object):
                 return "details_error"
         else:
             return "blank_entry"
+    def after_add_list(self,listname):
+        if AddList().check_for_blanks(listname)==True:
+            if AddList().check_for_duplicate(listname)==True:
+                return "success"
+            else:
+                return "duped_entry"
 
+        else:
+            return "blank_entry"
 
 class UserRegister(object):
     def check_for_blanks(self, username, email, password, confirm_pass):
@@ -63,3 +71,16 @@ class UserLogin(object):
             return True
         else:
             return False
+
+class AddList(object):
+    def check_for_blanks(self,listname):
+        if listname=="":
+            return False
+        else:
+            return True
+    #this check should happen based in the current user
+    def check_for_duplicate(self,listname):
+        if listname == ShopList.list_name:
+            return False
+        else:
+            return True
