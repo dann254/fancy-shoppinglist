@@ -31,17 +31,22 @@ all the files contain both the desktop and mobile desings.
   ![dashboardmobile.png screenshot](screenshots/dashboardmobile.png?raw=true "")
 
 ## addshoppinglist.bmpr
-    the following images show wireframes for adding a shopping list.
-    this alows a user to create a new shopping list.
-    ![dashboard.png screenshot](screenshots/addshoppinglist.png?raw=true "")
-    ![dashboardmobile.png screenshot](screenshots/addshoppinglistm.png?raw=true "")
+  the following images show wireframes for adding a shopping list.
+  this alows a user to create a new shopping list.
+  ![addshoppinglist.png screenshot](screenshots/addshoppinglist.png?raw=true "")
+  ![addshoppinglistm.png screenshot](screenshots/addshoppinglistm.png?raw=true "")
 ## addbuddy.bmpr
-      the following images show wireframes for adding a buddy.
-      the interface allows a user to invite a friend.
-      ![dashboard.png screenshot](screenshots/addbuddy.png?raw=true "")
-      ![dashboardmobile.png screenshot](screenshots/addbuddym.png?raw=true "")
+  the following images show wireframes for adding a buddy.
+  the interface allows a user to invite a friend.
+  ![addbuddy.png screenshot](screenshots/addbuddy.png?raw=true "")
+  ![addbuddym.png screenshot](screenshots/addbuddym.png?raw=true "")
 ## addlocation.bmpr
-        the following images show wireframes for adding shopping locations.
-        this allows a user to add a shopping zone.
-        ![dashboard.png screenshot](screenshots/addzone.png?raw=true "")
-        ![dashboardmobile.png screenshot](screenshots/addzonem.png?raw=true "")
+  the following images show wireframes for adding shopping locations.
+  this allows a user to add a shopping zone.
+  ![addzone.png screenshot](screenshots/addzone.png?raw=true "")
+  ![addzonem.png screenshot](screenshots/addzonem.png?raw=true "")
+## shoppinglist.bmpr
+  the following images show wireframes for viewing, editing and adding items to the shoppinglist.
+  this allows a user to add a shopping zone.
+  ![shoppinglist.png screenshot](screenshots/shoppinglist.png?raw=true "")
+  ![shoppinglistm.png screenshot](screenshots/shoppinglistm.png?raw=true "")
