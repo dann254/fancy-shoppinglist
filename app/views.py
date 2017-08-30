@@ -26,21 +26,12 @@ def signup():
             #at this point all the user data has been verified and should be saved
             flash('signup success', 'success')
             return redirect(url_for('home.signin'))
-        elif form_submit == "blank_entry":
-            flash('Please fill all the fields before submit', 'error')
-            return render_template('signup.html')
 
         elif form_submit == "password_error":
             flash('passwords did not match', 'error')
             return render_template('signup.html')
-        elif form_submit == "username_error":
-            flash('username already exists', 'error')
-            return render_template('signup.html')
-        elif form_submit == "email_error":
-            flash('email already exists', 'error')
-            return render_template('signup.html')
-        else:
-            flash('nothing happened', 'error')
+        elif form_submit == "username_error" or form_submit == "email_error":
+            flash('username or email already exists', 'error')
             return render_template('signup.html')
 
 
@@ -60,15 +51,12 @@ def signin():
             flash('login success', 'success')
             slist = ShopList().list_name
             return redirect(url_for('dash.dashboard', slist=slist, username = User.user_name))
-        elif login_submit == "blank_entry":
+        if login_submit == "blank_entry":
             flash('Please fill all the fields before submit', 'error')
             return render_template('signin.html')
 
-        elif login_submit == "details_error":
+        if login_submit == "details_error":
             flash('incorrect password or username', 'error')
-            return render_template('signin.html')
-        else:
-            flash('nothing happened', 'error')
             return render_template('signin.html')
     return render_template('signin.html')
 
