@@ -1,5 +1,7 @@
+#this is the test form.
+#some data like login and register are verified from mock_data.py
 import unittest
-from app.user_management import UserRegister, FormSubmission
+from app.user_management import UserRegister, FormSubmission, UserLogin
 
 class RegisterTest(unittest.TestCase):
     #test 1
@@ -39,9 +41,27 @@ class RegisterTest(unittest.TestCase):
     def sucessful_register_test(self):
         result = FormSubmission().after_user_submit_register("name", "user1@mail", "password", "password")
         self.assertEqual("success", result)
-    #test 9
+    #test 10
     def failed_register_test(self):
         result = FormSubmission().after_user_submit_register("", "user1@mail", "password", "")
+        self.assertFalse("success"==result)
+
+class LoginTest(unittest.TestCase):
+    #test 11
+    def login_blanks_success_test(self):
+        result = UserLogin().check_for_blanks("name", "password")
+        self.assertEqual(True, result)
+    #test 12
+    def login_blanks_fail_test(self):
+        result = UserLogin().check_for_blanks("", "password",)
+        self.assertEqual(False, result)
+    #test 13
+    def sucessful_login_test(self):
+        result = FormSubmission().after_login_submit("user", "password")
+        self.assertEqual("success", result)
+    #test 14
+    def failed_login_test(self):
+        result = FormSubmission().after_login_submit("user2","password")
         self.assertFalse("success"==result)
 
 if __name__ == '__main__':

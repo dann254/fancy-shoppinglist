@@ -129,6 +129,9 @@ body{
 .content a:visited{
   color: cyan;
 }
+.test{
+  color: red;
+}
 .form-s input{
   height: 30px;
   width: 300px;

@@ -1,5 +1,6 @@
 # this file contains all the required functions to run the app
 
+#import test data
 from app.mock_data import User
 
 class FormSubmission(object):
@@ -19,8 +20,17 @@ class FormSubmission(object):
                 return "password_error"
         else:
             return "blank_entry"
+    def after_login_submit(self, username,password):
+        if UserLogin().check_for_blanks(username,password)==True:
+            if UserLogin().verify_login_details(username,password)==True:
+                return "success"
+            else:
+                return "details_error"
+        else:
+            return "blank_entry"
 
-class UserRegister():
+
+class UserRegister(object):
     def check_for_blanks(self, username, email, password, confirm_pass):
         if username=="" or email=="" or password=="" or confirm_pass == "":
             return False
@@ -38,6 +48,18 @@ class UserRegister():
             return False
     def check_if_email_exists(self, email):
         if User.user_email!=email:
+            return True
+        else:
+            return False
+
+class UserLogin(object):
+    def check_for_blanks(self, username, password):
+        if username==""or password=="":
+            return False
+        else:
+            return True
+    def verify_login_details(self, username,password):
+        if username == User.user_name and password== User.user_password:
             return True
         else:
             return False

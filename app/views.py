@@ -20,13 +20,6 @@ def signup():
         email = request.form['email']
         password = request.form['password']
         confirm_pass = request.form['cpassword']
-        #verify password similarity
-        #if UserRegister().verify_password_similarity(password, confirm_pass) == True:
-        #    flash('signup success', 'success')
-        #    return redirect(url_for('home.signin'))
-        #else:
-        #    flash('passwords did not match', 'success')
-        #    return render_template('signup.html')
         form_submit = FormSubmission().after_user_submit_register(username, email, password, confirm_pass)
         if form_submit == "success":
             #at this point all the user data has been verified and should be saved
@@ -56,6 +49,25 @@ def signup():
 #route for sigin
 @home.route('/signin/', methods=['GET', 'POST'])
 def signin():
+    #form submit
+    if request.method == "POST":
+        username = request.form['username']
+        password = request.form['password']
+        login_submit = FormSubmission().after_login_submit(username,password)
+        if login_submit == "success":
+            #at this point all the user data has been verified and should loged in
+            flash('login success', 'success')
+            return redirect(url_for('dash.dashboard'))
+        elif login_submit == "blank_entry":
+            flash('Please fill all the fields before submit', 'error')
+            return render_template('signin.html')
+
+        elif login_submit == "details_error":
+            flash('incorrect password or username', 'error')
+            return render_template('signin.html')
+        else:
+            flash('nothing happened', 'error')
+            return render_template('signin.html')
     return render_template('signin.html')
 
 #this route links to the dashboard
