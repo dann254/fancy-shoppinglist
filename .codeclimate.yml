@@ -1,12 +1,1 @@
-engines:
-  csslint:
-    enabled: true
-  duplication:
-    enabled: true
-    config:
-      languages:
-      - python:
 
-Python: true
-notifications:
-  email: false
