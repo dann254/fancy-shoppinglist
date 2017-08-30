@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <!--start of content of the app-->
+<div class="dash-content">
+  <div class="list-adder">
+    <h2>Add new shoppinglist</h2>
+    <form class="form-s" action="{{url_for('dash.add_shoppinglist')}}" method="post">
+      <input type="text" name="listname" value="" placeholder="shopping list name" required>
+      <button type="submit" name="button" class="button2">add</button>
+    </form>
+  </div>
+
+
+</div>
+{% endblock%}

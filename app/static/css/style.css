@@ -226,3 +226,21 @@ body{
   height: 30px;
   text-align: center;
 }
+
+.list-adder{
+  padding-top: 9%;
+  padding-bottom: 15%;
+  color: white;
+}
+.button2 {
+  margin-left: -8px;
+  height: 36px;
+  width:60px;
+  background-color: green;
+  font-weight: bold;
+  color: white;
+  border-style: line;
+  border-left: none;
+  border-color: cyan;
+  border-width: 1px;
+}

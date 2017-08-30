@@ -29,3 +29,19 @@ all the files contain both the desktop and mobile desings.
   the dashboard allows the user to view, create,share and delete their shopping lists after loging in. it also shows the user's friends and shopping locations.
   ![dashboard.png screenshot](screenshots/dashboard.png?raw=true "")
   ![dashboardmobile.png screenshot](screenshots/dashboardmobile.png?raw=true "")
+
+## addshoppinglist.bmpr
+    the following images show wireframes for adding a shopping list.
+    this alows a user to create a new shopping list.
+    ![dashboard.png screenshot](screenshots/addshoppinglist.png?raw=true "")
+    ![dashboardmobile.png screenshot](screenshots/addshoppinglistm.png?raw=true "")
+## addbuddy.bmpr
+      the following images show wireframes for adding a buddy.
+      the interface allows a user to invite a friend.
+      ![dashboard.png screenshot](screenshots/addbuddy.png?raw=true "")
+      ![dashboardmobile.png screenshot](screenshots/addbuddym.png?raw=true "")
+## addlocation.bmpr
+        the following images show wireframes for adding shopping locations.
+        this allows a user to add a shopping zone.
+        ![dashboard.png screenshot](screenshots/addzone.png?raw=true "")
+        ![dashboardmobile.png screenshot](screenshots/addzonem.png?raw=true "")
