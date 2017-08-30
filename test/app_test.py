@@ -40,8 +40,8 @@ class RegisterTest(unittest.TestCase):
         result = FormSubmission().after_user_submit_register("name", "user1@mail", "password", "password")
         self.assertEqual("success", result)
     #test 9
-    def faild_register_test(self):
-        result = FormSubmission().after_user_submit_register("", "user1@mail", "password", "password")
+    def failed_register_test(self):
+        result = FormSubmission().after_user_submit_register("", "user1@mail", "password", "")
         self.assertFalse("success"==result)
 
 if __name__ == '__main__':

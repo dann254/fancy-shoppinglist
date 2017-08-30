@@ -29,6 +29,7 @@ def signup():
         #    return render_template('signup.html')
         form_submit = FormSubmission().after_user_submit_register(username, email, password, confirm_pass)
         if form_submit == "success":
+            #at this point all the user data has been verified and should be saved
             flash('signup success', 'success')
             return redirect(url_for('home.signin'))
         elif form_submit == "blank_entry":

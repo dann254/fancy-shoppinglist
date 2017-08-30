@@ -20,9 +20,9 @@ class FormSubmission(object):
         else:
             return "blank_entry"
 
-class UserRegister(object):
+class UserRegister():
     def check_for_blanks(self, username, email, password, confirm_pass):
-        if username=="" and email=="" and password=="" and confirm_pass == "":
+        if username=="" or email=="" or password=="" or confirm_pass == "":
             return False
         else:
             return True
