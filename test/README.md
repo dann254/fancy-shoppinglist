@@ -27,10 +27,18 @@ this are the test used on the program.
   is the inverse of test 7 and receives False if there are blanks.
 
 ## test 9 & 10
-  these test sumarise all the above tests and check for successful and unsucessful user registrations.
+  these test summarize all the above tests and check for successful and unsuccessful user registrations.
 
 ## test 11 & 12
   these tests check blanks in user login.
 
 ## test 13 and 14
-these tests check for successful and unsucessful user registration respectively.
+  these tests check for successful and unsuccessful user registration respectively.
+
+## test 15 & 16
+  these check if an added name is a blank and respond accordingly
+## test 17 & 18
+  these check if a list name already exists
+
+## test 19 & 20
+ these check how successful and unsuccessful tests workout

@@ -10,16 +10,7 @@
         </div>
         <div class="list-body">
 
-            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
-            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
-            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
-            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
-            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
-            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
-            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
-            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
-            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
-            <span class="list-item">Shopping list <a href="#"> share</a> <a href="#">view </a> </span>
+            <span class="list-item">{{slist}} <a href="#"> share</a> <a href="{{url_for('dash.shoppinglist')}}">view </a> </span>
         </div>
         <div class="list-footer">
             <a href="{{url_for('dash.add_shoppinglist')}}">add new</a>
@@ -42,7 +33,7 @@
         <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
         </div>
         <div class="list-footer">
-            <a href="#">Invite Buddy</a>
+            <a href="{{url_for('dash.add_buddy')}}">Invite Buddy</a>
         </div>
       </div>
       <div class="list">
@@ -60,7 +51,7 @@
 
         </div>
         <div class="list-footer">
-            <a href="#">add new</a>
+            <a href="{{url_for('dash.add_zone')}}">add new</a>
 
         </div>
       </div>

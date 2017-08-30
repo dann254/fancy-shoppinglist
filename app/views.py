@@ -1,7 +1,7 @@
 # Import flask dependencies
 from flask import Blueprint, request, render_template,flash, g, session, redirect, url_for
 from app.user_management import UserRegister, FormSubmission
-from app.mock_data import User
+from app.mock_data import User, ShopList
 
 # Define the blueprints
 home = Blueprint('home', __name__)
@@ -58,7 +58,8 @@ def signin():
         if login_submit == "success":
             #at this point all the user data has been verified and should loged in
             flash('login success', 'success')
-            return redirect(url_for('dash.dashboard'))
+            slist = ShopList().list_name
+            return redirect(url_for('dash.dashboard', slist=slist, username = User.user_name))
         elif login_submit == "blank_entry":
             flash('Please fill all the fields before submit', 'error')
             return render_template('signin.html')
@@ -74,9 +75,46 @@ def signin():
 #this route links to the dashboard
 @dash.route('/dashboard/', methods=['GET','POST'])
 def dashboard():
-    return render_template('dashboard.html', username=User.user_name)
+
+    slist = ShopList().list_name
+    return render_template('dashboard.html', username=User.user_name, slist=slist)
 
 #adding new shopping lists
 @dash.route('/dashboard/add-shoppinglist/', methods=['GET','POST'])
 def add_shoppinglist():
-    return render_template('add_shoppinglist.html')
+    if request.method == "POST":
+        listname = request.form['listname']
+        form_submit = FormSubmission().after_add_list(listname)
+        if form_submit == "success":
+            #at this point all the details are verified and the list is added.
+            flash('shopping list added successfully', 'success')
+            slist = ShopList().list_name
+            return redirect(url_for('dash.dashboard', username=User.user_name, slist=slist))
+        elif form_submit == "blank_entry":
+            flash('Please enter a name', 'error')
+            return render_template('add_shoppinglist.html', username=User.user_name)
+        elif form_submit == "duped_entry":
+            flash('You already have a shopping list with this name', 'error')
+            return render_template('add_shoppinglist.html', username=User.user_name)
+        else:
+            flash('nothing happened', 'error')
+            return render_template('add_shoppinglist.html', username=User.user_name)
+
+    return render_template('add_shoppinglist.html', username=User.user_name)
+
+#shopping lists view
+@dash.route('/dashboard/shoppinglist/', methods=['GET','POST'])
+def shoppinglist():
+
+    slist = ShopList().list_name
+    return render_template('shoppinglist.html', username=User.user_name,slist=slist)
+
+#adding new friends
+@dash.route('/dashboard/add-friend/', methods=['GET','POST'])
+def add_buddy():
+    return render_template('addBuddy.html', username=User.user_name)
+
+#adding new zones
+@dash.route('/dashboard/add-zone/', methods=['GET','POST'])
+def add_zone():
+    return render_template('addzone.html', username=User.user_name)
