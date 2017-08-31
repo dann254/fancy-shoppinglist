@@ -18,6 +18,7 @@ body, html {
   padding-left: 30px;
   padding-right: 30px;
   border-radius: 0;
+  background: rgb(0, 0, 0);
   background: rgba(0, 0, 0, 0.7);
 }
 .navbar-brand {
@@ -30,6 +31,7 @@ body, html {
   display: inline;
 }
 .custom-content{
+  background: rgb(0, 0, 0);
   background: rgba(0, 0, 0, 0.8);
   vertical-align: middle;
   height: 82%;
@@ -38,7 +40,7 @@ body, html {
   overflow:auto;
 }
 .custom-content-2{
-
+  background: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0.8);
     vertical-align: middle;
     height: 82%;
@@ -47,7 +49,7 @@ body, html {
     overflow:auto;
 }
 .custom-content-3{
-
+  background: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0.8);
     vertical-align: middle;
     height: 82%;
@@ -56,7 +58,7 @@ body, html {
     overflow:auto;
 }
 .custom-content-4{
-
+  background: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0.8);
     vertical-align: middle;
     height: 82%;
