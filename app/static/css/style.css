@@ -55,6 +55,29 @@ body, html {
     padding-bottom: 4%;
     overflow:auto;
 }
+.custom-content-4{
+
+    background: rgba(0, 0, 0, 0.8);
+    vertical-align: middle;
+    height: 82%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    overflow:auto;
+}
 .text-white{
   color:white;
+}
+.row-dash {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.panel-custom{
+  padding: 0;
+  border: 2px solid black;
+}
+
+.panel-custombody{
+  min-height: 380px;
+  max-height: 380px;
+  overflow-y: scroll;
 }

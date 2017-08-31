@@ -4,32 +4,26 @@
     <meta charset="utf-8">
       <!--app title-->
     <title>Fancy Shoppinglist</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
   </head>
   <body>
-        {% block flash_messages %}
-            {%- with messages = get_flashed_messages(with_categories=true) -%}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        {% if category=='error' %}
-                            {% set category='danger' %}
-                        {% endif %}
-                        <div class="alert-{{category}}">{{ message|safe }}</div>
-                    {% endfor %}
-                {% endif %}
-            {%- endwith %}
-        {% endblock %}
+
+    <div class="bg">
         <!--start  of navigation bar. containing logo, app name and tabs-->
-        <div class="dash-nav">
-          <div class="app-heading">
-            <ul>
-              <li>
-                <a href="{{url_for('dash.dashboard')}}"><img src="/static/images/logo.png" alt="logo"></a></li>
-                <li class="app-name">Fancy Shoppinglist</li>
-            </ul>
+        <nav class="navbar navbar-inverse navbar-index-custom">
+          <div class="container-fluid">
+          <div class="navbar-header">
+                <a class="navbar-brand" href="{{url_for('dash.dashboard')}}"><img class="d-inline-block align-top" src="/static/images/logo.png" alt="logo">Fancy Shoppinglist</a>
+
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
           </div>
-          <div class="nav-items">
-            <ul>
+            <ul class="nav navbar-nav navbar-right navbar-collapse collapse" id="myNavbar">
               <li><a href="#">{{username}}</a></li>
               <li><a href="#">Buddies</a></li>
               <li><a href="#">Help</a></li>
@@ -38,7 +32,20 @@
 
           </div>
 
-        </div>
+        </nav>
+        
+            {% block flash_messages %}
+                {%- with messages = get_flashed_messages(with_categories=true) -%}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            {% if category=='error' %}
+                                {% set category='danger' %}
+                            {% endif %}
+                            <div class="alert-{{category}}">{{ message|safe }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {%- endwith %}
+            {% endblock %}
           <!--end of navigation-->
           <!--start of content of the app-->
       {% block main %}
@@ -49,8 +56,15 @@
 
     </div>
     <!--start of footer-->
-  <div class="footer">
+  <div class="footer navbar-fixed-bottom text-center text-white navbar-index-custom">
     copyright 2017
   </div>
+
+  </div>
+
+    <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

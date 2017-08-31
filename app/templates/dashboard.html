@@ -2,57 +2,111 @@
 {% block content %}
 
       <!--start of content of the app-->
-    <div class="dash-content">
-      <div class="list">
-        <div class="list-header">
-          <h2>Shopping lists</h2>
-          <h5>view, add and share your shopping lists here</h5>
+    <div class="col-lg-12 text-center custom-content-4">
+      <div class="row row-dash">
+        <div class="panel panel-primary col-lg-4 panel-custom">
+          <div class="panel-heading text-left">
+            <b>Shopping lists</b>: view, add and share your shopping lists here.
+          </div>
+          <div class="panel-body text-left panel-custombody">
+            <div class="btn-group col-lg-12">
+                <a class="btn btn-success col-lg-8">{{slist}}</a>
+                <a href="{{url_for('dash.shoppinglist')}}" class="btn btn-primary col-lg-2">View</a>
+                <a href="#" class="btn btn-primary col-lg-2">share</a>
+              </div><br><br>
+          </div>
+          <div class="panel-footer">
+              <a href="{{url_for('dash.add_shoppinglist')}}">add new</a>
+          </div>
         </div>
-        <div class="list-body">
+        <div class="panel panel-danger col-lg-4 panel-custom">
+          <div class="panel-heading text-left">
+            <b>Buddies</b>: View friend's shopping lists and add friends
+          </div>
+          <div class="panel-body text-left panel-custombody">
+            <div class="btn-group col-lg-12">
+                <a class="btn btn-warning col-lg-8">Buddy</a>
+                <a href="#" class="btn btn-danger col-lg-2">View</a>
+                <a href="#" class="btn btn-danger col-lg-2">Delete</a>
+              </div><br><br>
+              <div class="btn-group col-lg-12">
+                  <a class="btn btn-warning col-lg-8">Buddy</a>
+                  <a href="#" class="btn btn-danger col-lg-2">View</a>
+                  <a href="#" class="btn btn-danger col-lg-2">Delete</a>
+                </div><br><br>
+                <div class="btn-group col-lg-12">
+                    <a class="btn btn-warning col-lg-8">Buddy</a>
+                    <a href="#" class="btn btn-danger col-lg-2">View</a>
+                    <a href="#" class="btn btn-danger col-lg-2">Delete</a>
+                  </div><br><br>
 
-            <span class="list-item">{{slist}} <a href="#"> share</a> <a href="{{url_for('dash.shoppinglist')}}">view </a> </span>
-        </div>
-        <div class="list-footer">
-            <a href="{{url_for('dash.add_shoppinglist')}}">add new</a>
-        </div>
-      </div>
-      <div class="list">
-        <div class="list-header">
-          <h2>Buddies</h2>
-          <h5>View friend's shopping lists and add friends</h5>
-        </div>
-        <div class="list-body">
-        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
-        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
-        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
-        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
-        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
-        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
-        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
-        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
-        <span class="list-item">Buddy <a href="#"> delete</a> <a href="#">view </a> </span>
-        </div>
-        <div class="list-footer">
-            <a href="{{url_for('dash.add_buddy')}}">Invite Buddy</a>
-        </div>
-      </div>
-      <div class="list">
-        <div class="list-header">
-          <h2>Shopping Zones</h2>
-          <h5>view and add places you shop at</h5>
-        </div>
-        <div class="list-body">
-        <span class="list-item">Zone </span>
-        <span class="list-item">Zone </span>
-        <span class="list-item">Zone </span>
-        <span class="list-item">Zone </span>
-        <span class="list-item">Zone </span>
-        <span class="list-item">Zone </span>
+              <div class="btn-group col-lg-12">
+                  <a class="btn btn-warning col-lg-8">Buddy</a>
+                  <a href="#" class="btn btn-danger col-lg-2">View</a>
+                  <a href="#" class="btn btn-danger col-lg-2">Delete</a>
+                </div><br><br>
+            <div class="btn-group col-lg-12">
+                <a class="btn btn-warning col-lg-8">Buddy</a>
+                <a href="#" class="btn btn-danger col-lg-2">View</a>
+                <a href="#" class="btn btn-danger col-lg-2">Delete</a>
+              </div><br><br>
+              <div class="btn-group col-lg-12">
+                  <a class="btn btn-warning col-lg-8">Buddy</a>
+                  <a href="#" class="btn btn-danger col-lg-2">View</a>
+                  <a href="#" class="btn btn-danger col-lg-2">Delete</a>
+                </div><br><br>
 
-        </div>
-        <div class="list-footer">
-            <a href="{{url_for('dash.add_zone')}}">add new</a>
+        <div class="btn-group col-lg-12">
+            <a class="btn btn-warning col-lg-8">Buddy</a>
+            <a href="#" class="btn btn-danger col-lg-2">View</a>
+            <a href="#" class="btn btn-danger col-lg-2">Delete</a>
+          </div><br><br>
+          <div class="btn-group col-lg-12">
+              <a class="btn btn-warning col-lg-8">Buddy</a>
+              <a href="#" class="btn btn-danger col-lg-2">View</a>
+              <a href="#" class="btn btn-danger col-lg-2">Delete</a>
+            </div><br><br>
+        <div class="btn-group col-lg-12">
+            <a class="btn btn-warning col-lg-8">Buddy</a>
+            <a href="#" class="btn btn-danger col-lg-2">View</a>
+            <a href="#" class="btn btn-danger col-lg-2">Delete</a>
+          </div><br><br>
 
+            <div class="btn-group col-lg-12">
+                <a class="btn btn-warning col-lg-8">Buddy</a>
+                <a href="#" class="btn btn-danger col-lg-2">View</a>
+                <a href="#" class="btn btn-danger col-lg-2">Delete</a>
+              </div><br><br>
+          <div class="btn-group col-lg-12">
+              <a class="btn btn-warning col-lg-8">Buddy</a>
+              <a href="#" class="btn btn-danger col-lg-2">View</a>
+              <a href="#" class="btn btn-danger col-lg-2">Delete</a>
+            </div><br><br>
+            <div class="btn-group col-lg-12">
+                <a class="btn btn-warning col-lg-8">Buddy</a>
+                <a href="#" class="btn btn-danger col-lg-2">View</a>
+                <a href="#" class="btn btn-danger col-lg-2">Delete</a>
+              </div><br><br>
+          </div>
+          <div class="panel-footer">
+              <a href="{{url_for('dash.add_buddy')}}">add buddy</a>
+          </div>
+        </div>
+        <div class="panel panel-success col-lg-4 panel-custom">
+          <div class="panel-heading text-left">
+            <b>Shopping Zones</b>: view and add places you shop at
+          </div>
+          <div class="panel-body text-left panel-custombody">
+                <a class="btn btn-primary col-lg-12">Zone</a><br><br>
+                <a class="btn btn-primary col-lg-12">Zone</a><br><br>
+                <a class="btn btn-primary col-lg-12">Zone</a><br><br>
+                <a class="btn btn-primary col-lg-12">Zone</a><br><br>
+                <a class="btn btn-primary col-lg-12">Zone</a><br><br>
+                <a class="btn btn-primary col-lg-12">Zone</a><br><br>
+          </div>
+          <div class="panel-footer">
+              <a href="{{url_for('dash.add_zone')}}">add new</a>
+          </div>
         </div>
       </div>
 
