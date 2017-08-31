@@ -25,7 +25,7 @@ This is an innovative shopping list app that allows users to record and share th
 # running tests.
   instructions for running tests are available within the test folder.
 
-  *note* travis-ci is set to run th test on this repository
+  **note** travis-ci is set to run the test automatically on this repository
 
 # folder structure.
 ```
