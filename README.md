@@ -17,6 +17,8 @@ This is an innovative shopping list app that allows users to record and share th
   1. on the `runserver.py` file comment out line 4 and uncomment line 6.
   2. `python runserver.py`
 
+  **Note**: *cdn version of bootsrap is used in this app. make sure you have internet connection when running the app*
+
 # Deployed on heroku
   https://salty-stream-46784.herokuapp.com/
 
