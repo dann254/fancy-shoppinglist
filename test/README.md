@@ -7,7 +7,7 @@ this are the test used on the program.
   3. run `nosetests app_test.py`
 
 ## Test 1.
-  this test verifies if when password and confirm password are similar, the result is TRUE.
+  this test verifies if, when password and confirm password are similar, the result is TRUE.
 ## Test 2.
     This test is the inverse of test one and confirms if the result is false when the passwords dont match
 
@@ -33,7 +33,7 @@ this are the test used on the program.
   these tests check blanks in user login.
 
 ## test 13 and 14
-  these tests check for successful and unsuccessful user registration respectively.
+  these tests check for successful and unsuccessful user login respectively.
 
 ## test 15 & 16
   these check if an added name is a blank and respond accordingly
@@ -41,4 +41,4 @@ this are the test used on the program.
   these check if a list name already exists
 
 ## test 19 & 20
- these check how successful and unsuccessful tests workout
+ these check how successful and unsuccessful list additions workout

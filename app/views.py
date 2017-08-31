@@ -7,7 +7,7 @@ from app.mock_data import User, ShopList
 home = Blueprint('home', __name__)
 dash = Blueprint('dash',__name__)
 
-# route for landing pafe
+# route for landing page
 @home.route('/', methods=['GET', 'POST'])
 def landing_page():
     return render_template('index.html')
@@ -15,8 +15,9 @@ def landing_page():
 #route for signup
 @home.route('/signup/', methods=['GET', 'POST'])
 def signup():
-    #form submit
+    # at form submit, this statement is excecuted
     if request.method == "POST":
+        #request all the variables from the form.
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
@@ -26,7 +27,7 @@ def signup():
             #at this point all the user data has been verified and should be saved
             flash('signup success', 'success')
             return redirect(url_for('home.signin'))
-
+        #if passwords dont match, an error message is sent to the user. the same happens if username and email already exist.
         elif form_submit == "password_error":
             flash('passwords did not match', 'error')
             return render_template('signup.html')
@@ -41,7 +42,7 @@ def signup():
 #route for sigin
 @home.route('/signin/', methods=['GET', 'POST'])
 def signin():
-    #form submit
+    # at form submit, this statement is excecuted
     if request.method == "POST":
         username = request.form['username']
         password = request.form['password']
@@ -51,10 +52,11 @@ def signin():
             flash('login success', 'success')
             slist = ShopList().list_name
             return redirect(url_for('dash.dashboard', slist=slist, username = User.user_name))
+        #the system should reject blank entries
         if login_submit == "blank_entry":
             flash('Please fill all the fields before submit', 'error')
             return render_template('signin.html')
-
+        #the system should reject and notify the user when their login is not authenticated.
         if login_submit == "details_error":
             flash('incorrect password or username', 'error')
             return render_template('signin.html')
@@ -63,13 +65,14 @@ def signin():
 #this route links to the dashboard
 @dash.route('/dashboard/', methods=['GET','POST'])
 def dashboard():
-
+#this displays the dashboard to the user after login. It should be restricted to loggedin users only.
     slist = ShopList().list_name
     return render_template('dashboard.html', username=User.user_name, slist=slist)
 
 #adding new shopping lists
 @dash.route('/dashboard/add-shoppinglist/', methods=['GET','POST'])
 def add_shoppinglist():
+#displaying the add shopping list form and hanling submission
     if request.method == "POST":
         listname = request.form['listname']
         form_submit = FormSubmission().after_add_list(listname)
