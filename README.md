@@ -27,7 +27,34 @@ This is an innovative shopping list app that allows users to record and share th
 
   *note* travis-ci is set to run th test on this repository
 
-## the folders contain the html/css designs, UML class diagram and wireframes for the app
+# folder structure.
+~/fancy-shoppinglist
+  |-- runserver.py
+  |-- config.py
+  |-- requirements.txt
+  |-- README.md
+  |-- Procfile
+  |-- .travis.yml
+  |-- .gitignore
+  |__ /app      
+       |-- __init__.py
+       |-- views.py
+       |-- user_management.py
+       |-- mock_data.py
+       |__ /templates
+            |-- *all templates used by flask most of the extend base templates to save memory and make them more mentainable*
+       |__ /static
+            |-- *all images and css files*
+  |__ /designs
+        |-- *HTML/CSS designs and UML diagrams*
+  |__ /tests
+        |-- __init__.py
+        |-- app_test.py
+        |-- README.md
+  |__ /wireframes
+        |-- *all wireframe designs for the UI*
+
+## The following are folders that contain the html/css designs, UML class diagram and wireframes for the app
 
 ## designs
   1. This folder contains all the html designs and the UML class diagram.
