@@ -27,13 +27,13 @@
               <li><a href="#">{{username}}</a></li>
               <li><a href="#">Buddies</a></li>
               <li><a href="#">Help</a></li>
-              <li><a href="#">Logout</a></li>
+              <li><a href="/">Logout</a></li>
             </ul>
 
           </div>
 
         </nav>
-        
+
             {% block flash_messages %}
                 {%- with messages = get_flashed_messages(with_categories=true) -%}
                     {% if messages %}

@@ -81,3 +81,20 @@ body, html {
   max-height: 380px;
   overflow-y: scroll;
 }
+.panel-custombody2{
+  min-height: 300px;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+.p-m-fix{
+  padding: 0;
+  margin: 0;
+}
+.panel-footer>a{
+  display: block;
+  text-decoration: none;
+}
+
+.panel-footer>a:hover{
+  background: lightblue;
+}
