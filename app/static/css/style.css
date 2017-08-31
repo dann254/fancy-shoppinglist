@@ -12,6 +12,7 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow:auto;
 }
 .navbar-index-custom{
   padding-left: 30px;
@@ -32,8 +33,27 @@ body, html {
   background: rgba(0, 0, 0, 0.8);
   vertical-align: middle;
   height: 82%;
-  padding-top: 8%;
-  padding-bottom: 8%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  overflow:auto;
+}
+.custom-content-2{
+
+    background: rgba(0, 0, 0, 0.8);
+    vertical-align: middle;
+    height: 82%;
+    padding-top: 8%;
+    padding-bottom: 8%;
+    overflow:auto;
+}
+.custom-content-3{
+
+    background: rgba(0, 0, 0, 0.8);
+    vertical-align: middle;
+    height: 82%;
+    padding-top: 2%;
+    padding-bottom: 4%;
+    overflow:auto;
 }
 .text-white{
   color:white;

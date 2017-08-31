@@ -31,7 +31,7 @@
                           {% if category=='error' %}
                               {% set category='danger' %}
                           {% endif %}
-                          <div class="alert-{{category}}">{{ message|safe }}</div>
+                          <div class="alert alert-{{category}}">{{ message|safe }}</div>
                       {% endfor %}
                   {% endif %}
               {%- endwith %}
