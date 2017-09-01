@@ -6,39 +6,16 @@ this are the test used on the program.
   2. navigate to the test folder and
   3. run `nosetests app_test.py`
 
-## Test 1.
-  this test verifies if, when password and confirm password are similar, the result is TRUE.
-## Test 2.
-    This test is the inverse of test one and confirms if the result is false when the passwords dont match
-
+## test 1
+  this is a test for successful registration of a user. the test should receive success.
+## test 2
+  this is a test for unsuccessful registration of a user. the test should fail if it receives success.
 ## test 3
-  this test checks if a username exists and should receive True if the username doesnt exists
-
+  this is a test for the two passwords given by user at registration. the test should receive password_error if the passwords dont match.
 ## test 4
-  this is the inverse of test 3 and reurns False if the username exists
+  this is a test fto see if user alredy exists. the test should receive u_email_error if the user exists.
 
-## test 5 & 6
-  Test 5 and 6 work similar to test 3 and 4 above, but in this case, it verifies the email.
-
-## test 7
-  this test checks for blank entries and should receive True if no blanks are found
-
-## test 8
-  is the inverse of test 7 and receives False if there are blanks.
-
-## test 9 & 10
-  these test summarize all the above tests and check for successful and unsuccessful user registrations.
-
-## test 11 & 12
-  these tests check blanks in user login.
-
-## test 13 and 14
-  these tests check for successful and unsuccessful user login respectively.
-
-## test 15 & 16
-  these check if an added name is a blank and respond accordingly
-## test 17 & 18
-  these check if a list name already exists
-
-## test 19 & 20
- these check how successful and unsuccessful list additions workout
+## test 5
+  this is a test for successful login. the test should receive success.
+## test 6
+  this is a test for unsuccessful login. the test should fail if it receives success.
