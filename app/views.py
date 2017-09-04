@@ -1,8 +1,7 @@
 # Import flask dependencies
 from flask import Blueprint, request, render_template,flash, g, session, redirect, url_for
 
-from app import app, user_handler, form_handler
-from app.mock_data import User, ShopList
+from app import app, user_handler, list_hanler
 
 # Define the blueprints
 home = Blueprint('home', __name__)
@@ -52,7 +51,7 @@ def signin():
             #at this point all the user data has been verified and should loged in
             session['username']=username
             flash('login success', 'success')
-            slist = ShopList().list_name
+            slist = list_hanler.return_shopping_list()
             return redirect(url_for('dash.dashboard', slist=slist, username =session['username']))
         #the system should reject blank entries
         if login_submit == "blank_entry":
@@ -73,7 +72,7 @@ def dashboard():
         flash('pleasse login to continue', 'error')
         return redirect(url_for('home.signin'))
     else:
-        slist = ShopList().list_name
+        slist = list_hanler.return_shopping_list()
         return render_template('dashboard.html', username=session['username'], slist=slist)
 
 #adding new shopping lists
@@ -86,17 +85,14 @@ def add_shoppinglist():
     else:
         if request.method == "POST":
             listname = request.form['listname']
-            form_submit = form_handler.after_add_list(listname)
+            form_submit = list_hanler.create_new_shoppinglist(listname)
             if form_submit == "success":
                 #at this point all the details are verified and the list is added.
                 flash('shopping list added successfully', 'success')
-                slist = ShopList().list_name
+                slist = list_hanler.return_shopping_list()
                 return redirect(url_for('dash.dashboard', username=session['username'], slist=slist))
             elif form_submit == "blank_entry":
                 flash('Please enter a name', 'error')
-                return render_template('add_shoppinglist.html', username=session['username'])
-            elif form_submit == "duped_entry":
-                flash('You already have a shopping list with this name', 'error')
                 return render_template('add_shoppinglist.html', username=session['username'])
             else:
                 flash('nothing happened', 'error')
@@ -105,14 +101,25 @@ def add_shoppinglist():
         return render_template('add_shoppinglist.html', username=session['username'])
 
 #shopping lists view
-@dash.route('/dashboard/shoppinglist/', methods=['GET','POST'])
-def shoppinglist():
+@dash.route('/dashboard/shoppinglist/<list_id>', methods=['GET','POST'])
+def shoppinglist(list_id):
     if "username" not in session:
         flash('pleasse login to continue', 'error')
         return redirect(url_for('home.signin'))
     else:
-        slist = ShopList().list_name
-        return render_template('shoppinglist.html', username=session['username'],slist=slist)
+        slist = list_hanler.return_shopping_list()
+        if slist == []:
+            flash('you have no lists', 'info')
+            return redirect(url_for('dash.dashboard'))
+        for i in slist:
+            try:
+
+                if int(i['id'])==int(list_id):
+                    return render_template('shoppinglist.html', username=session['username'],slist=i)
+            except Exception as e:
+                flash("shoppinglist not found", 'error')
+        flash('shoppinglist not found', 'error')
+        return redirect(url_for('dash.dashboard'))
 
 #adding new friends
 @dash.route('/dashboard/add-friend/', methods=['GET','POST'])

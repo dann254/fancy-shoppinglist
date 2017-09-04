@@ -36,28 +36,3 @@ class UserManager(object):
                 return "success"
         else:
                 return "details_error"
-
-class FormSubmission(object):
-    def after_add_list(self,listname):
-        if AddList().check_for_blanks(listname)==True:
-            if AddList().check_for_duplicate(listname)==True:
-                return "success"
-            else:
-                return "duped_entry"
-
-        else:
-            return "blank_entry"
-
-
-class AddList(object):
-    def check_for_blanks(self,listname):
-        if listname=="":
-            return False
-        else:
-            return True
-    #this check should happen based in the current user
-    #def check_for_duplicate(self,listname):
-    #    if listname == ShopList.list_name:
-    #        return False
-    #    else:
-    #        return True
