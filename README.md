@@ -13,8 +13,7 @@ This is an innovative shopping list app that allows users to record and share th
   5. work on the virtual environment you just created. `workon fancy`
   6. install the requirements in the environment. `pip install -r requirements.txt`
 
-# Running the app on debug mode
-  1. on the `runserver.py` file comment out line 4 and uncomment line 6.
+# Running the app
   2. `python runserver.py`
 
   **Note**: *cdn version of bootsrap is used in this app. make sure you have internet connection when running the app*
