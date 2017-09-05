@@ -1,7 +1,7 @@
 # Import flask dependencies
 from flask import Blueprint, request, render_template,flash, g, session, redirect, url_for
 
-from app import app, user_handler, list_handler, buddy_handler, zone_handler
+from app import app, user_handler, list_hanler
 
 # Define the blueprints
 home = Blueprint('home', __name__)
@@ -51,7 +51,7 @@ def signin():
             #at this point all the user data has been verified and should loged in
             session['username']=username
             flash('login success', 'success')
-            slist = list_handler.return_shopping_list()
+            slist = list_hanler.return_shopping_list()
             return redirect(url_for('dash.dashboard', slist=slist, username =session['username']))
         #the system should reject blank entries
         if login_submit == "blank_entry":
@@ -72,34 +72,24 @@ def dashboard():
         flash('pleasse login to continue', 'error')
         return redirect(url_for('home.signin'))
     else:
-        slist = list_handler.return_shopping_list()
-        blist = buddy_handler.return_buddies()
-        zlist = zone_handler.return_zones()
-        users = user_handler.return_users()
-        my_buddies=[]
-        username= str(session['username'])
-        default = ""
-        for i in blist:
-            if i.get(username, default):
-                my_buddies.append(i.get(username, default))
-
-        return render_template('dashboard.html', username=session['username'], slist=slist, blist=blist, zlist=zlist, my_buddies=my_buddies)
+        slist = list_hanler.return_shopping_list()
+        return render_template('dashboard.html', username=session['username'], slist=slist)
 
 #adding new shopping lists
 @dash.route('/dashboard/add-shoppinglist/', methods=['GET','POST'])
 def add_shoppinglist():
-#displaying the add shopping list form and handling submission
+#displaying the add shopping list form and hanling submission
     if "username" not in session:
         flash('pleasse login to continue', 'error')
         return redirect(url_for('home.signin'))
     else:
         if request.method == "POST":
             listname = request.form['listname']
-            form_submit = list_handler.create_new_shoppinglist(listname, session['username'])
+            form_submit = list_hanler.create_new_shoppinglist(listname)
             if form_submit == "success":
                 #at this point all the details are verified and the list is added.
                 flash('shopping list added successfully', 'success')
-                slist = list_handler.return_shopping_list()
+                slist = list_hanler.return_shopping_list()
                 return redirect(url_for('dash.dashboard', username=session['username'], slist=slist))
             elif form_submit == "blank_entry":
                 flash('Please enter a name', 'error')
@@ -117,7 +107,7 @@ def shoppinglist(list_id):
         flash('pleasse login to continue', 'error')
         return redirect(url_for('home.signin'))
     else:
-        slist = list_handler.return_shopping_list()
+        slist = list_hanler.return_shopping_list()
         if slist == []:
             flash('you have no lists', 'info')
             return redirect(url_for('dash.dashboard'))
@@ -125,111 +115,11 @@ def shoppinglist(list_id):
             try:
 
                 if int(i['id'])==int(list_id):
-
-                    zlist = zone_handler.return_zones()
-                    return render_template('shoppinglist.html', username=session['username'],slist=i, zlist=zlist)
-            except Exception as e:
-                flash(str(e), 'error')
-        flash('shoppinglist not found', 'error')
-        return redirect(url_for('dash.dashboard'))
-
-#shopping lists view
-@dash.route('/dashboard/buddyshoppinglist/<list_id>', methods=['GET','POST'])
-def buddyshoppinglist(list_id):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
-        return redirect(url_for('home.signin'))
-    else:
-        slist = list_handler.return_shopping_list()
-        if slist == []:
-            flash('you have no lists', 'info')
-            return redirect(url_for('dash.dashboard'))
-        for i in slist:
-            try:
-
-                if int(i['id'])==int(list_id):
-                    return render_template('buddyshoppinglist.html', username=session['username'],slist=i)
+                    return render_template('shoppinglist.html', username=session['username'],slist=i)
             except Exception as e:
                 flash("shoppinglist not found", 'error')
         flash('shoppinglist not found', 'error')
         return redirect(url_for('dash.dashboard'))
-
-#sharering shopping lists
-@dash.route('/dashboard/share-list/<list_id>', methods=['GET'])
-def share_list(list_id):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
-        return redirect(url_for('home.signin'))
-    else:
-        if int(list_id):
-            share = list_handler.share_shoppinglist(list_id)
-            if share == "success":
-                flash('shoppinglist share status changed', 'success')
-                return redirect(url_for('dash.dashboard'))
-            else:
-                flash('something went wrong ', 'error')
-                return redirect(url_for('dash.dashboard'))
-
-
-        else:
-            flash('shoppinglist not found', 'error')
-            return redirect(url_for('dash.dashboard'))
-
-
-#updating shopping lists
-@dash.route('/dashboard/update-view/<list_id>', methods=['GET'])
-def update_view(list_id):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
-        return redirect(url_for('home.signin'))
-    else:
-        return render_template('update_shoppinglist.html', list_id=list_id)
-
-#updating shopping lists
-@dash.route('/dashboard/update-list/<list_id>', methods=['GET','POST'])
-def update_list(list_id):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
-        return redirect(url_for('home.signin'))
-    else:
-        if int(list_id) and request.method == "POST":
-            new_name=request.form['newname']
-            rename = list_handler.update_shoppinglist(list_id, new_name)
-            if rename == "success":
-                flash('rename successful', 'success')
-                return redirect(url_for('dash.shoppinglist', list_id=list_id))
-            else:
-                flash('something went wrong', 'error')
-                return redirect(url_for('dash.shoppinglist', list_id=list_id))
-
-
-        else:
-            flash('shoppinglist not found', 'error')
-            return redirect(url_for('dash.dashboard'))
-
-#updating shopping zone
-@dash.route('/dashboard/add-shoppingzone/<list_id>', methods=['GET','POST'])
-def add_shoppingzone(list_id):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
-        return redirect(url_for('home.signin'))
-    else:
-        if int(list_id) and request.method == "POST":
-            szone=request.form['zone']
-            rename = list_handler.update_zone(list_id, szone)
-            if rename == "success":
-                flash('zoned', 'success')
-                return redirect(url_for('dash.shoppinglist', list_id=list_id))
-            else:
-                flash('something went wrong', 'error')
-                return redirect(url_for('dash.shoppinglist', list_id=list_id))
-
-
-        else:
-            flash('shoppinglist not found', 'error')
-            return redirect(url_for('dash.dashboard'))
-
-
 
 #adding new friends
 @dash.route('/dashboard/add-friend/', methods=['GET','POST'])
@@ -239,47 +129,6 @@ def add_buddy():
         return redirect(url_for('home.signin'))
     else:
         return render_template('addBuddy.html', username=session['username'])
-#adding new friends
-@dash.route('/dashboard/add-friend/<parent>', methods=['GET','POST'])
-def add_buddy_save(parent):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
-        return redirect(url_for('home.signin'))
-    else:
-        if parent and request.method == "POST":
-            new_buddy=request.form['buddyname']
-            users=user_handler.return_users()
-            buds = buddy_handler.return_buddies()
-            existance = False
-            for i in users:
-                if i['username']== new_buddy:
-                    existance=True
-            refriend = False
-            #for s in buds:
-            #    if s[parent]==new_buddy:
-            #        refriend=True
-            if refriend==True:
-                flash('you are already buddies add new buddy', 'error')
-                return redirect(url_for('dash.add_buddy'))
-
-            if new_buddy == parent:
-                flash('you cant add yourself as a friend', 'error')
-                return redirect(url_for('dash.add_buddy'))
-
-            elif existance== True:
-                befriend = buddy_handler.add_new_buddy(parent, new_buddy)
-                if befriend == "success":
-                    flash('buddy successfully invited', 'success')
-                    return redirect(url_for('dash.dashboard'))
-                else:
-                    flash('something went wrong', 'error')
-                    return redirect(url_for('dash.add_buddy'))
-
-            else:
-                flash('buddy does not have an account', 'error')
-                return redirect(url_for('dash.add_buddy'))
-
-        return redirect(url_for('dash.add_buddy'))
 
 #adding new zones
 @dash.route('/dashboard/add-zone/', methods=['GET','POST'])
@@ -289,88 +138,6 @@ def add_zone():
         return redirect(url_for('home.signin'))
     else:
         return render_template('addzone.html', username=session['username'])
-
-@dash.route('/dashboard/add-zone/<username>', methods=['GET','POST'])
-def add_zone_view(username):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
-        return redirect(url_for('home.signin'))
-    else:
-        if username and request.method == "POST":
-            new_zone=request.form['zone']
-            szone = zone_handler.create_new_zone(username, new_zone)
-            if szone == "success":
-                flash('zone successfully added', 'success')
-                return redirect(url_for('dash.dashboard'))
-            else:
-                flash('something went wrong', 'error')
-                return redirect(url_for('dash.add_zone'))
-
-        return redirect(url_for('dash.add_zone'))
-
-
-#delete shoppinglist
-@dash.route('/dashboard/delete-list/<list_id>')
-def delete_list(list_id):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
-        return redirect(url_for('home.signin'))
-    else:
-        if int(list_id):
-            delete = list_handler.delete_list(list_id)
-            if delete == "success":
-                flash('shoppinglist deleted!', 'info')
-                return redirect(url_for('dash.dashboard'))
-            else:
-                flash('something went wrong ', 'error')
-                return redirect(url_for('dash.dashboard'))
-
-
-        else:
-            flash('shoppinglist not found', 'error')
-            return redirect(url_for('dash.dashboard'))
-
-#unfriend buddies
-@dash.route('/dashboard/unfriend/<buddy>')
-def delete_buddy(buddy):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
-        return redirect(url_for('home.signin'))
-    else:
-        if str(buddy):
-            delete = buddy_handler.delete_buddy(session['username'],buddy)
-            if delete == "success":
-                flash('buddy unfriended !', 'info')
-                return redirect(url_for('dash.dashboard'))
-            else:
-                flash('something went wrong ', 'error')
-                return redirect(url_for('dash.dashboard'))
-
-
-        else:
-            flash('buddy not found', 'error')
-            return redirect(url_for('dash.dashboard'))
-
-#delete zone
-@dash.route('/dashboard/delete-zone/<zone>')
-def delete_zone(zone):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
-        return redirect(url_for('home.signin'))
-    else:
-        if str(zone):
-            delete = zone_handler.delete_zone(session['username'],zone)
-            if delete == "success":
-                flash('zone deleted!', 'info')
-                return redirect(url_for('dash.dashboard'))
-            else:
-                flash('something went wrong ', 'error')
-                return redirect(url_for('dash.dashboard'))
-
-
-        else:
-            flash('zone not found', 'error')
-            return redirect(url_for('dash.dashboard'))
 
 @app.route('/logout/')
 def logout():

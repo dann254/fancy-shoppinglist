@@ -36,5 +36,3 @@ class UserManager(object):
                 return "success"
         else:
                 return "details_error"
-    def return_users(self):
-        return self.user_list
