@@ -1,7 +1,7 @@
 import os
 # Import flask and template operators
 from flask import Flask, render_template
-from app import user_management, list_management, buddy_management,zone_management
+from app import user_management, list_management, buddy_management,zone_management, item_management
 
 
 # Define the WSGI application object
@@ -14,6 +14,7 @@ user_handler = user_management.UserManager()
 list_handler = list_management.ListManager()
 buddy_handler = buddy_management.BuddyManager()
 zone_handler = zone_management.ZoneManager()
+item_handler = item_management.ItemManager()
 
 #import blueprints
 from app.views import home as home

@@ -1,7 +1,7 @@
 # Import flask dependencies
 from flask import Blueprint, request, render_template,flash, g, session, redirect, url_for
 
-from app import app, user_handler, list_handler, buddy_handler, zone_handler
+from app import app, user_handler, list_handler, buddy_handler, zone_handler, item_handler
 
 # Define the blueprints
 home = Blueprint('home', __name__)
@@ -130,13 +130,15 @@ def shoppinglist(list_id):
                 if int(i['id'])==int(list_id):
 
                     zlist = zone_handler.return_zones()
-                    return render_template('shoppinglist.html', username=session['username'],slist=i, zlist=zlist)
+
+                    ilist = item_handler.return_items()
+                    return render_template('shoppinglist.html', username=session['username'],slist=i, zlist=zlist, ilist=ilist)
             except Exception as e:
                 flash(str(e), 'error')
         flash('shoppinglist not found', 'error')
         return redirect(url_for('dash.dashboard'))
 
-#shopping lists view
+#friends shopping lists view
 @dash.route('/dashboard/buddyshoppinglist/<list_id>', methods=['GET','POST'])
 def buddyshoppinglist(list_id):
     if login_required()=="fail":
@@ -150,7 +152,8 @@ def buddyshoppinglist(list_id):
             try:
 
                 if int(i['id'])==int(list_id):
-                    return render_template('buddyshoppinglist.html', username=session['username'],slist=i)
+                    ilist = item_handler.return_items()
+                    return render_template('buddyshoppinglist.html', username=session['username'],slist=i, ilist=ilist)
             except Exception as e:
                 flash("shoppinglist not found", 'error')
         flash('shoppinglist not found', 'error')
@@ -301,6 +304,44 @@ def add_zone_view(username):
                 return redirect(url_for('dash.add_zone'))
 
         return redirect(url_for('dash.add_zone'))
+# add item to shoppinglist
+@dash.route('/dashboard/add-item/<list_id>', methods=['GET','POST'])
+def add_item(list_id):
+    if login_required()=="fail":
+        return redirect(url_for('home.signin'))
+    else:
+        if int(list_id) and request.method == "POST":
+            item_string = request.form['item']
+            item_list = item_string.split(',')
+            if len(item_list)<3 or len(item_list)>3 :
+                flash('please enter the specified details', 'warning')
+                return redirect(url_for('dash.shoppinglist', list_id=list_id))
+            try:
+                int(item_list[1])
+            except ValueError:
+                flash('please enter item details in correct order and values', 'warning')
+                return redirect(url_for('dash.shoppinglist', list_id=list_id))
+
+            try:
+                int(item_list[2])
+            except ValueError:
+                flash('please enter item details in correct order and values', 'warning')
+                return redirect(url_for('dash.shoppinglist', list_id=list_id))
+
+            form_submit = item_handler.create_new_item(item_list[0],item_list[1],item_list[2], list_id)
+            if form_submit == "success":
+                #at this point all the details are verified and the item is added.
+                flash('item list added', 'success')
+                ilist = item_handler.return_items()
+                return redirect(url_for('dash.shoppinglist', list_id=list_id))
+            elif form_submit == "blank_entry":
+                flash('Please enter values', 'error')
+                return redirect(url_for('dash.shoppinglist', list_id=list_id))
+        else:
+            flash('nothing happened', 'error')
+            return redirect(url_for('dash.shoppinglist', list_id=list_id))
+
+    return redirect(url_for('dash.shoppinglist', list_id=list_id))
 
 
 #delete shoppinglist
@@ -362,6 +403,26 @@ def delete_zone(zone):
         else:
             flash('zone not found', 'error')
             return redirect(url_for('dash.dashboard'))
+
+#delete item
+@dash.route('/dashboard/delete-item/<list_id>/<item_id>/')
+def delete_item(list_id, item_id):
+    if login_required()=="fail":
+        return redirect(url_for('home.signin'))
+    else:
+        if int(item_id) and int(list_id):
+            delete = item_handler.delete_item(item_id)
+            if delete == "success":
+                flash('item deleted!', 'info')
+                return redirect(url_for('dash.shoppinglist', list_id=list_id))
+            else:
+                flash('something went wrong ', 'error')
+                return redirect(url_for('dash.shoppinglist', list_id=list_id))
+
+
+        else:
+            flash('item not found', 'error')
+            return redirect(url_for('dash.shoppinglist', list_id=list_id))
 
 @app.route('/logout/')
 def logout():
