@@ -6,19 +6,23 @@
       <div class="row row-dash">
         <div class="col-lg-12">
           <h1 class="col-lg-3 text-success p-m-fix">{{slist['name']}}
-          <small><a href="#">edit </a></small></h1>
-          <span class="col-lg-3 col-md-4">
-          <select class=" form-control">
-            <option value="">select zone</option>
-            <option value="">zone</option>
-            <option value="">zone</option>
-            <option value="">zone</option>
-          </select>
-        </span>
-          <span class="col-lg-3 col-md-4 text-white text-left">
-          <label for="share"> share</label>
-          <input id="share" type="checkbox" name="" value="">
-        </span>
+          <small><a href="{{url_for('dash.update_view', list_id=slist['id'])}}">edit </a></small></h1><a href="{{url_for('dash.delete_list', list_id=slist['id'])}}" class="btn btn-danger">delete</a>
+          <form class="" action="{{url_for('dash.add_shoppingzone',list_id=slist['id'] )}}" method="post">
+            <span class="col-lg-3 col-md-4 input-group">
+              <label for="e" class="text-white">select shopping zone</label>
+            <select id="e" name="zone">
+              {%for zone in zlist%}
+              {%if zone[username] == slist['zone']%}
+              <option value="{{zone[username]}}" selected>{{zone[username]}}</option>
+              {%else%}
+              <option value="{{zone[username]}}">{{zone[username]}}</option>
+              {%endif%}
+              {%endfor%}
+            </select>
+            <button type="submit" class="btn btn-success">save</button>
+          </span>
+          </form>
+
         </div>
 
       </div><br><br>

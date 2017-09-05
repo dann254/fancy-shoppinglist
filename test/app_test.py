@@ -3,6 +3,7 @@
 import unittest
 # import all the required classes for testing
 from app.user_management import UserManager
+from app.list_management import ListManager
 
 # these are the tests for user registrations
 class RegisterTest(unittest.TestCase):
@@ -44,6 +45,21 @@ class LoginTest(unittest.TestCase):
     #this is a test for unsuccessful login. the test should fail if it receives success.
     def failed_login_test(self):
         result = self.user_manager.login("raider", "monkey")
+        self.assertFalse("success"==result)
+
+# these are the tests for shoppinglists
+class ShoppinglistTest(unittest.TestCase):
+    def setUp(self):
+        self.list_manager=ListManager()
+    #test 7
+    #this is a test for successful creation of a shoppinglist.
+    def successful_list_creation_test(self):
+        result = self.list_manager.create_new_shoppinglist("kitchenware")
+        self.assertTrue("success"==result)
+    #test 8
+    #this is a test for unsuccessful list creation
+    def failed_list_creation_test(self):
+        result = self.list_manager.create_new_shoppinglist("")
         self.assertFalse("success"==result)
 
 if __name__ == '__main__':
