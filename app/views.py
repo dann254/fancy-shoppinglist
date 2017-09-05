@@ -7,6 +7,12 @@ from app import app, user_handler, list_handler, buddy_handler, zone_handler
 home = Blueprint('home', __name__)
 dash = Blueprint('dash',__name__)
 
+def login_required():
+    if "username" not in session:
+        flash('pleasse login to continue', 'error')
+        return "fail"
+    else:
+        return "pass"
 # route for landing page
 @home.route('/', methods=['GET', 'POST'])
 def landing_page():
@@ -68,8 +74,7 @@ def signin():
 def dashboard():
 #this displays the dashboard to the user after login. It should be restricted to loggedin users only.
 
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
+    if login_required()=="fail":
         return redirect(url_for('home.signin'))
     else:
         slist = list_handler.return_shopping_list()
@@ -89,8 +94,7 @@ def dashboard():
 @dash.route('/dashboard/add-shoppinglist/', methods=['GET','POST'])
 def add_shoppinglist():
 #displaying the add shopping list form and handling submission
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
+    if login_required()=="fail":
         return redirect(url_for('home.signin'))
     else:
         if request.method == "POST":
@@ -113,8 +117,7 @@ def add_shoppinglist():
 #shopping lists view
 @dash.route('/dashboard/shoppinglist/<list_id>', methods=['GET','POST'])
 def shoppinglist(list_id):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
+    if login_required()=="fail":
         return redirect(url_for('home.signin'))
     else:
         slist = list_handler.return_shopping_list()
@@ -136,8 +139,7 @@ def shoppinglist(list_id):
 #shopping lists view
 @dash.route('/dashboard/buddyshoppinglist/<list_id>', methods=['GET','POST'])
 def buddyshoppinglist(list_id):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
+    if login_required()=="fail":
         return redirect(url_for('home.signin'))
     else:
         slist = list_handler.return_shopping_list()
@@ -157,8 +159,7 @@ def buddyshoppinglist(list_id):
 #sharering shopping lists
 @dash.route('/dashboard/share-list/<list_id>', methods=['GET'])
 def share_list(list_id):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
+    if login_required()=="fail":
         return redirect(url_for('home.signin'))
     else:
         if int(list_id):
@@ -179,8 +180,7 @@ def share_list(list_id):
 #updating shopping lists
 @dash.route('/dashboard/update-view/<list_id>', methods=['GET'])
 def update_view(list_id):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
+    if login_required()=="fail":
         return redirect(url_for('home.signin'))
     else:
         return render_template('update_shoppinglist.html', list_id=list_id)
@@ -188,8 +188,7 @@ def update_view(list_id):
 #updating shopping lists
 @dash.route('/dashboard/update-list/<list_id>', methods=['GET','POST'])
 def update_list(list_id):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
+    if login_required()=="fail":
         return redirect(url_for('home.signin'))
     else:
         if int(list_id) and request.method == "POST":
@@ -210,8 +209,7 @@ def update_list(list_id):
 #updating shopping zone
 @dash.route('/dashboard/add-shoppingzone/<list_id>', methods=['GET','POST'])
 def add_shoppingzone(list_id):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
+    if login_required()=="fail":
         return redirect(url_for('home.signin'))
     else:
         if int(list_id) and request.method == "POST":
@@ -234,16 +232,14 @@ def add_shoppingzone(list_id):
 #adding new friends
 @dash.route('/dashboard/add-friend/', methods=['GET','POST'])
 def add_buddy():
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
+    if login_required()=="fail":
         return redirect(url_for('home.signin'))
     else:
         return render_template('addBuddy.html', username=session['username'])
 #adding new friends
 @dash.route('/dashboard/add-friend/<parent>', methods=['GET','POST'])
 def add_buddy_save(parent):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
+    if login_required()=="fail":
         return redirect(url_for('home.signin'))
     else:
         if parent and request.method == "POST":
@@ -284,16 +280,14 @@ def add_buddy_save(parent):
 #adding new zones
 @dash.route('/dashboard/add-zone/', methods=['GET','POST'])
 def add_zone():
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
+    if login_required()=="fail":
         return redirect(url_for('home.signin'))
     else:
         return render_template('addzone.html', username=session['username'])
 
 @dash.route('/dashboard/add-zone/<username>', methods=['GET','POST'])
 def add_zone_view(username):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
+    if login_required()=="fail":
         return redirect(url_for('home.signin'))
     else:
         if username and request.method == "POST":
@@ -312,8 +306,7 @@ def add_zone_view(username):
 #delete shoppinglist
 @dash.route('/dashboard/delete-list/<list_id>')
 def delete_list(list_id):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
+    if login_required()=="fail":
         return redirect(url_for('home.signin'))
     else:
         if int(list_id):
@@ -333,8 +326,7 @@ def delete_list(list_id):
 #unfriend buddies
 @dash.route('/dashboard/unfriend/<buddy>')
 def delete_buddy(buddy):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
+    if login_required()=="fail":
         return redirect(url_for('home.signin'))
     else:
         if str(buddy):
@@ -354,8 +346,7 @@ def delete_buddy(buddy):
 #delete zone
 @dash.route('/dashboard/delete-zone/<zone>')
 def delete_zone(zone):
-    if "username" not in session:
-        flash('pleasse login to continue', 'error')
+    if login_required()=="fail":
         return redirect(url_for('home.signin'))
     else:
         if str(zone):
