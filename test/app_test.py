@@ -59,7 +59,7 @@ class ShoppinglistTest(unittest.TestCase):
     #test 8
     #this is a test for unsuccessful list creation
     def failed_list_creation_test(self):
-        result = self.list_manager.create_new_shoppinglist("")
+        result = self.list_manager.create_new_shoppinglist("", "")
         self.assertFalse("success"==result)
 
 if __name__ == '__main__':
