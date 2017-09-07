@@ -1,5 +1,5 @@
 # Import flask dependencies
-from flask import Blueprint, request, render_template,flash, g, session, redirect, url_for
+from flask import Blueprint, request, render_template,flash, session, redirect, url_for
 
 from app import app, user_handler, list_handler, buddy_handler, zone_handler, item_handler
 import re
@@ -87,7 +87,6 @@ def dashboard():
         slist = list_handler.return_shopping_list()
         blist = buddy_handler.return_buddies()
         zlist = zone_handler.return_zones()
-        users = user_handler.return_users()
         my_buddies=[]
         username= str(session['username'])
         default = ""
@@ -161,7 +160,7 @@ def buddyshoppinglist(list_id):
                 if int(i['id'])==int(list_id):
                     ilist = item_handler.return_items()
                     return render_template('buddyshoppinglist.html', username=session['username'],slist=i, ilist=ilist)
-            except Exception as e:
+            except:
                 flash("shoppinglist not found", 'error')
         flash('shoppinglist not found', 'error')
         return redirect(url_for('dash.dashboard'))
@@ -336,14 +335,13 @@ def add_item(list_id):
                 return redirect(url_for('dash.shoppinglist', list_id=list_id))
             items = item_handler.return_items()
             for item in items:
-                if item_list[0]== item['name']:
+                if item_list[0].lower()== item['name']:
                     flash('Item already exists', 'warning')
                     return redirect(url_for('dash.shoppinglist', list_id=list_id))
             form_submit = item_handler.create_new_item(item_list[0],item_list[1],item_list[2], list_id)
             if form_submit == "success":
                 #at this point all the details are verified and the item is added.
                 flash('item list added', 'success')
-                ilist = item_handler.return_items()
                 return redirect(url_for('dash.shoppinglist', list_id=list_id))
             elif form_submit == "blank_entry":
                 flash('Please enter values', 'error')

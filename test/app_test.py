@@ -54,7 +54,7 @@ class ShoppinglistTest(unittest.TestCase):
     #test 7
     #this is a test for successful creation of a shoppinglist.
     def successful_list_creation_test(self):
-        result = self.list_manager.create_new_shoppinglist("kitchenware")
+        result = self.list_manager.create_new_shoppinglist("kitchenware", "user")
         self.assertTrue("success"==result)
     #test 8
     #this is a test for unsuccessful list creation
