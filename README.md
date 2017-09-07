@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/644d536ad2664d2a96934040e4a2d240)](https://www.codacy.com/app/dann254/fancy-shoppinglist?utm_source=github.com&utm_medium=referral&utm_content=dann254/fancy-shoppinglist&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/dann254/fancy-shoppinglist.svg?branch=flask-basics)](https://travis-ci.org/dann254/fancy-shoppinglist)
 [![Code Climate](https://codeclimate.com/github/dann254/fancy-shoppinglist/badges/gpa.svg)](https://codeclimate.com/github/dann254/fancy-shoppinglist/)
 [![Coverage Status](https://coveralls.io/repos/github/dann254/fancy-shoppinglist/badge.svg)](https://coveralls.io/github/dann254/fancy-shoppinglist)
