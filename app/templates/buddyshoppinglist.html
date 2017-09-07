@@ -1,0 +1,46 @@
+{% extends "dashbase.html" %}
+{% block content %}
+
+      <!--start of content of the app-->
+    <div class="col-lg-12 text-center custom-content-4">
+      <div class="row row-dash">
+        <div class="col-lg-12">
+          <h1 class="col-lg-3 text-success p-m-fix">{{slist['name']}} <small>by {{slist['ownername']}}</small></h1>
+          <span class="col-lg-4 text-white">shopping zone: <i style="color:cyan">{{slist['zone']}}</i></span>
+        </div>
+
+      </div><br><br>
+        <div class="row row-dash">
+            <div class="panel panel-primary col-lg-6 col-md-6 panel-custom">
+              <div class="panel-heading text-left"><b>item list</b>
+              </div>
+              <div class="panel-body table-responsive text-left panel-custombody2">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>name</th>
+                    <th>price</th>
+                    <th>Quantity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {%set list_id = slist['id'] | int%}
+                  {% for i in ilist%}
+                  {%set item_id = i['list_id'] | int%}
+                  {% if list_id == item_id%}
+                  <tr>
+                    <td>{{i['name']}}</td>
+                    <td>{{i['price']}}</td>
+                    <td>{{i['quantity']}}</td>
+                  </tr>
+                  {%endif%}
+                  {%endfor%}
+                </tbody>
+              </table>
+
+              </div>
+            </div>
+        </div>
+    </div>
+      <!--end of content-->
+    {% endblock%}

@@ -13,3 +13,5 @@ CSRF_SESSION_KEY = "elevat3dSeaM0nster"
 
 # Secret key for signing cookies
 SECRET_KEY = "elevat3dSeaM0nster"
+
+PORT=5000

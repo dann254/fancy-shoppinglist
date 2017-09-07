@@ -25,7 +25,6 @@
         <div class="row row-dash">
             <div class="panel panel-primary col-lg-5 col-md-6 panel-custom">
               <div class="panel-heading text-left"><b>item list</b>
-                <a href="#" class="col-lg-offset-8 col-md-offset-8 col-sm-offset-8 btn btn-sm btn-success">save</a>
               </div>
               <div class="panel-body table-responsive text-left panel-custombody2">
               <table class="table table-striped">
@@ -34,30 +33,23 @@
                     <th>name</th>
                     <th>price</th>
                     <th>Quantity</th>
+                    <th>action</th>
                   </tr>
                 </thead>
                 <tbody>
+                  {%set list_id = slist['id'] | int%}
+                  {% for i in ilist%}
+                  {%set item_id = i['list_id'] | int%}
+                  {% if list_id == item_id%}
+                  <tr>
+                    <td>{{i['name']}}</td>
+                    <td>{{i['price']}}</td>
+                    <td>{{i['quantity']}}</td>
+                    <td><a href="{{url_for('dash.delete_item', list_id=slist['id'] , item_id=i['id'])}}">delete</a></td>
 
-                  <tr>
-                    <td>item</td>
-                    <td><input type="number" name="" value="100"></td>
-                    <td><input type="number" name="" value="3"></td>
                   </tr>
-                  <tr>
-                    <td>item</td>
-                    <td><input type="number" name="" value="100"></td>
-                    <td><input type="number" name="" value="3"></td>
-                  </tr>
-                  <tr>
-                    <td>item</td>
-                    <td><input type="number" name="" value="100"></td>
-                    <td><input type="number" name="" value="3"></td>
-                  </tr>
-                  <tr>
-                    <th>TOTAL</td>
-                    <th>300</td>
-                    <th>9</td>
-                  </tr>
+                  {%endif%}
+                  {%endfor%}
                 </tbody>
               </table>
 
@@ -65,10 +57,10 @@
             </div>
             <div class="new-item">
 
-              <form class="form" action="#" method="post">
+              <form class="form" action="{{url_for('dash.add_item', list_id=slist['id'])}}" method="post">
                 <div class="form-group col-lg col-xs-4 col-xs col-md-4 col-md text-left">
                   <div class="input-group">
-                    <input type="text" name="name" class="form-control" placeholder="Item Name">
+                    <input type="text" name="item" class="form-control" placeholder="Item Name, price, quantity">
                     <span class="input-group-btn">
                       <button class="btn btn-success" type="submit">
                           add new item

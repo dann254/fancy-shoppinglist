@@ -102,12 +102,21 @@
             <b>Shopping Zones</b>: view and add places you shop at
           </div>
           <div class="panel-body text-left panel-custombody">
+<<<<<<< HEAD
                 <a class="btn btn-primary col-lg-12">Zone</a><br><br>
                 <a class="btn btn-primary col-lg-12">Zone</a><br><br>
                 <a class="btn btn-primary col-lg-12">Zone</a><br><br>
                 <a class="btn btn-primary col-lg-12">Zone</a><br><br>
                 <a class="btn btn-primary col-lg-12">Zone</a><br><br>
                 <a class="btn btn-primary col-lg-12">Zone</a><br><br>
+=======
+
+                {% for i in zlist %}
+                {%if i[username]%}
+                <i class="btn btn-primary col-lg-12 col-md-12 col-sm-12 col-xs-12"><i class="col-lg-8 col-md-8 col-sm-8 col-xs-8">{{i[username]}}</i> <a href="{{url_for('dash.delete_zone', zone=i[username])}}" style="color:red;" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">delete</a></i><br><br>
+                {%endif%}
+                {%endfor%}
+>>>>>>> list_sharing
           </div>
           <div class="panel-footer">
               <a href="{{url_for('dash.add_zone')}}">add new</a>
