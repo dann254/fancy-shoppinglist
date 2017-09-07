@@ -2,6 +2,7 @@
 from flask import Blueprint, request, render_template,flash, g, session, redirect, url_for
 
 from app import app, user_handler, list_handler, buddy_handler, zone_handler, item_handler
+import re
 
 # Define the blueprints
 home = Blueprint('home', __name__)
@@ -28,6 +29,12 @@ def signup():
         email = request.form['email']
         password = request.form['password']
         confirm_pass = request.form['cpassword']
+        if not re.match(r"(^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-z]+$)", email):
+            flash('please enter a valid email', 'error')
+            return render_template('signup.html')
+        if len(password)<6 and len(confirm_pass)<6:
+            flash('please enter a password of length 6', 'error')
+            return render_template('signup.html')
         form_submit = user_handler.register_new_user(username, email, password, confirm_pass)
         if form_submit == "success":
             #at this point all the user data has been verified and has been saved

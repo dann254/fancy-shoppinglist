@@ -34,7 +34,6 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>id</th>
                     <th>name</th>
                     <th>price</th>
                     <th>Quantity</th>
@@ -47,7 +46,6 @@
                   {%set item_id = i['list_id'] | int%}
                   {% if list_id == item_id%}
                   <tr>
-                    <th>{{i['id']}}</th>
                     <td>{{i['name']}}</td>
                     <td>{{i['price']}}</td>
                     <td>{{i['quantity']}}</td>

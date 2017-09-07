@@ -1,11 +1,10 @@
 # this file contains all the required functions to run the app
 
-
 class UserManager(object):
     #user registration and logging in
 
     def __init__(self):
-        # initialize list to containusers
+        # initialize list to contain users
         self.user_list = []
     #hanle verification and registration
     def register_new_user(self, username, email, password, cpassword):

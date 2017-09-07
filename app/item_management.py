@@ -8,7 +8,7 @@ class ItemManager(object):
     def create_new_item(self, name,price, quantity, list_id):
         item_holder = {}
         if name:
-            item_holder['name'] = name
+            item_holder['name'] = name.lower()
             item_holder['price'] = price
             item_holder['quantity'] = quantity
             item_holder['list_id'] = list_id
