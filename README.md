@@ -14,8 +14,7 @@ This is an innovative shopping list app that allows users to record and share th
   6. install the requirements in the environment. `pip install -r requirements.txt`
 
 # Running the app
-  1. change `app.run` to `app.run()`
-  2. `python runserver.py`
+  1. `python runserver.py`
 
   **Note**: *cdn version of bootsrap is used in this app. make sure you have internet connection when running the app*
 
