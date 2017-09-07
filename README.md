@@ -5,7 +5,7 @@
 # FANCY_SHOPPINGLIST
 This is an innovative shopping list app that allows users to record and share things they want to spend money on. The app keeps track of their shopping lists.
 
-#installation procedure.
+# installation procedure.
   1. Ensure you have *python 3*, *virtualenv* and *pip* installed on your local machine.
   2. Clone the project locally.
   3. navigate to the project folder.
@@ -41,7 +41,10 @@ This is an innovative shopping list app that allows users to record and share th
        |-- __init__.py
        |-- views.py
        |-- user_management.py
-       |-- mock_data.py
+       |-- buddy_management.py
+       |-- item_management.py
+       |-- list_management.py
+       |-- zone_managent.py
        |__ /templates
             |-- *all templates used by flask most of the extend base templates to save memory and make them more mentainable*
        |__ /static

@@ -19,3 +19,8 @@ this are the test used on the program.
   this is a test for successful login. the test should receive success.
 ## test 6
   this is a test for unsuccessful login. the test should fail if it receives success.
+## test 7
+  this is a test for successful creation of a shoppinglist.
+
+## test 8
+ this is a test for unsuccessful list creation

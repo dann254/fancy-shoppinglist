@@ -254,9 +254,9 @@ def add_buddy_save(parent):
                 if i['username']== new_buddy:
                     existance=True
             refriend = False
-            #for s in buds:
-            #    if s[parent]==new_buddy:
-            #        refriend=True
+            for s in buds:
+                if s[parent]==new_buddy:
+                    refriend=True
             if refriend==True:
                 flash('you are already buddies add new buddy', 'error')
                 return redirect(url_for('dash.add_buddy'))
@@ -327,7 +327,11 @@ def add_item(list_id):
             except ValueError:
                 flash('please enter item details in correct order and values', 'warning')
                 return redirect(url_for('dash.shoppinglist', list_id=list_id))
-
+            items = item_handler.return_items()
+            for item in items:
+                if item_list[0]== item['name']:
+                    flash('Item already exists', 'warning')
+                    return redirect(url_for('dash.shoppinglist', list_id=list_id))
             form_submit = item_handler.create_new_item(item_list[0],item_list[1],item_list[2], list_id)
             if form_submit == "success":
                 #at this point all the details are verified and the item is added.
