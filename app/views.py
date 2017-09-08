@@ -134,11 +134,15 @@ def shoppinglist(list_id):
             try:
 
                 if int(i['id'])==int(list_id):
+                    if str(i['ownername'])== str(session['username']):
 
-                    zlist = zone_handler.return_zones()
+                        zlist = zone_handler.return_zones()
 
-                    ilist = item_handler.return_items()
-                    return render_template('shoppinglist.html', username=session['username'],slist=i, zlist=zlist, ilist=ilist)
+                        ilist = item_handler.return_items()
+                        return render_template('shoppinglist.html', username=session['username'],slist=i, zlist=zlist, ilist=ilist)
+                    else:
+                        flash("Anauthorized", 'error')
+                        return redirect(url_for('dash.dashboard'))
             except Exception as e:
                 flash(str(e), 'error')
         flash('shoppinglist not found', 'error')
@@ -160,6 +164,7 @@ def buddyshoppinglist(list_id):
                 if int(i['id'])==int(list_id):
                     ilist = item_handler.return_items()
                     return render_template('buddyshoppinglist.html', username=session['username'],slist=i, ilist=ilist)
+
             except:
                 flash("shoppinglist not found", 'error')
         flash('shoppinglist not found', 'error')
@@ -260,8 +265,9 @@ def add_buddy_save(parent):
                 if i['username']== new_buddy:
                     existance=True
             refriend = False
+            default=""
             for s in buds:
-                if s[parent]==new_buddy:
+                if s.get(str(parent), default)==new_buddy:
                     refriend=True
             if refriend==True:
                 flash('you are already buddies add new buddy', 'error')
