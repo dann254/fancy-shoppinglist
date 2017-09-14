@@ -136,7 +136,7 @@ class ItemTest(unittest.TestCase):
     #this is a test for item update
     def update_item_test(self):
         self.item_manager.create_new_item("item1","20","1","1")
-        result = self.item_manager.update_item("1", "item_updated","65","3")
+        result = self.item_manager.update_items("1", "item_updated","65","3")
         self.assertTrue("success"==result)
 
 if __name__ == '__main__':

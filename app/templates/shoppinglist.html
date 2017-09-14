@@ -7,10 +7,9 @@
         <div class="col-lg-12">
           <h1 class="col-lg-3 text-success p-m-fix">{{slist['name']}}
           <small><a href="{{url_for('dash.update_view', list_id=slist['id'])}}">edit </a></small></h1><a href="{{url_for('dash.delete_list', list_id=slist['id'])}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete shoppinglist({{slist['name']}})?')">delete</a>
-          <form class="" action="{{url_for('dash.add_shoppingzone',list_id=slist['id'] )}}" method="post">
-            <span class="col-lg-3 col-md-4 input-group">
+          <form class="col-lg-3 col-md-4" action="{{url_for('dash.add_shoppingzone',list_id=slist['id'] )}}" method="post">
               <label for="e" class="text-white">select shopping zone</label>
-            <select id="e" name="zone">
+            <select id="e" class="form-control" name="zone">
               {%for zone in zlist%}
               {%if zone[username] == slist['zone']%}
               <option value="{{zone[username]}}" selected>{{zone[username]}}</option>
@@ -20,7 +19,6 @@
               {%endfor%}
             </select>
             <button type="submit" class="btn btn-success">save</button>
-          </span>
           </form>
 
         </div>
@@ -49,7 +47,7 @@
                     <td>{{i['name']}}</td>
                     <td>{{i['price']}}</td>
                     <td>{{i['quantity']}}</td>
-                    <td><a href="{{url_for('dash.delete_item', list_id=slist['id'] , item_id=i['id'])}}" onclick="return confirm('DELETE item({{i['name']}})?')">delete</a></td>
+                    <td><a href="{{url_for('dash.update_item', list_id=slist['id'], item_id=i['id'])}}">update </a>|<a href="{{url_for('dash.delete_item', list_id=slist['id'] , item_id=i['id'])}}" onclick="return confirm('DELETE item({{i['name']}})?')"> delete</a></td>
 
                   </tr>
                   {%endif%}
@@ -75,6 +73,7 @@
               </form>
             </div>
         </div>
+        <a href="{{url_for('dash.dashboard')}}" class="btn btn-warning" style="float:right;position: absolute; bottom: 0px;">Back</a>
     </div>
       <!--end of content-->
     {% endblock%}

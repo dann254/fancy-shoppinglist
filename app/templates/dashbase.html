@@ -6,6 +6,15 @@
     <title>Fancy Shoppinglist</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+
+    <script>
+    function goBack() {
+        window.history.back()
+    }
+    setTimeout(function() {
+        $('#flash').fadeOut(3000);
+    }, 5000);
+    </script>
   </head>
   <body>
 
@@ -31,8 +40,6 @@
 
           </div>
 
-        </nav>
-
             {% block flash_messages %}
                 {%- with messages = get_flashed_messages(with_categories=true) -%}
                     {% if messages %}
@@ -40,11 +47,13 @@
                             {% if category=='error' %}
                                 {% set category='danger' %}
                             {% endif %}
-                            <div class="alert alert-{{category}} text-center">{{ message|safe }}</div>
+                            <div id="flash" class="alert alert-{{category}} text-center col-lg-11 col-md-11 col-sm-11" style="position:absolute;z-index:10; opacity:.8;">{{ message|safe }}</div>
+
                         {% endfor %}
                     {% endif %}
                 {%- endwith %}
             {% endblock %}
+            </nav>
           <!--end of navigation-->
           <!--start of content of the app-->
       {% block main %}

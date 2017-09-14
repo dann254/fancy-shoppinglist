@@ -8,8 +8,12 @@ class ListManager(object):
     def create_new_shoppinglist(self, name, owner_name):
         shoppinglist_holder = {}
         if name:
+            if len(self.shoppinglists)==0:
+                list_id=1
+            else:
+                list_id=int(self.shoppinglists[-1]['id'])+1
             shoppinglist_holder['name'] = name
-            shoppinglist_holder['id'] = len(self.shoppinglists)+1
+            shoppinglist_holder['id'] = list_id
             shoppinglist_holder['ownername'] = owner_name
             shoppinglist_holder['shared'] = False
             shoppinglist_holder['zone'] = ""

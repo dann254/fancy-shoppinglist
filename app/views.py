@@ -336,7 +336,7 @@ def add_item(list_id):
                 return redirect(url_for('dash.shoppinglist', list_id=list_id))
             items = item_handler.return_items()
             for item in items:
-                if item_list[0].lower()== item['name']:
+                if item_list[0].lower()== item['name'] and int(list_id)==int(item['list_id']):
                     flash('Item already exists', 'warning')
                     return redirect(url_for('dash.shoppinglist', list_id=list_id))
             form_submit = item_handler.create_new_item(item_list[0],item_list[1],item_list[2], list_id)
@@ -361,6 +361,10 @@ def delete_list(list_id):
         return redirect(url_for('home.signin'))
     else:
         if int(list_id):
+            items=item_handler.return_items()
+            for item in items:
+                if int(item['list_id']) == int(list_id):
+                    item_handler.delete_item(int(item['id']))
             delete = list_handler.delete_list(list_id)
             if delete == "success":
                 flash('shoppinglist deleted!', 'info')
@@ -373,6 +377,7 @@ def delete_list(list_id):
         else:
             flash('shoppinglist not found', 'error')
             return redirect(url_for('dash.dashboard'))
+
 
 #unfriend buddies
 @dash.route('/dashboard/unfriend/<buddy>')
@@ -429,6 +434,33 @@ def delete_item(list_id, item_id):
                 flash('something went wrong ', 'error')
                 return redirect(url_for('dash.shoppinglist', list_id=list_id))
 
+
+        else:
+            flash('item not found', 'error')
+            return redirect(url_for('dash.shoppinglist', list_id=list_id))
+
+#update item
+@dash.route('/dashboard/update-item/<list_id>/<item_id>/', methods=['GET', 'POST'])
+def update_item(list_id, item_id):
+    if login_required()=="fail":
+        return redirect(url_for('home.signin'))
+    else:
+        if int(item_id):
+            if request.method == "POST":
+                update = item_handler.update_items(item_id, request.form['name'], request.form['price'], request.form['quantity'])
+                if update == "success":
+                    flash('item updated!', 'info')
+                    return redirect(url_for('dash.shoppinglist', list_id=list_id))
+                else:
+                    flash('something went wrong ', 'error')
+                    return redirect(url_for('dash.shoppinglist', list_id=list_id))
+            else:
+                items = item_handler.return_items()
+                for i in items:
+                    if int(i['id']) == int(item_id):
+                        item = i
+
+                return render_template('itemupdate.html', item=item, list_id=list_id)
 
         else:
             flash('item not found', 'error')

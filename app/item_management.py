@@ -8,18 +8,22 @@ class ItemManager(object):
     def create_new_item(self, name,price, quantity, list_id):
         item_holder = {}
         if name:
+            if len(self.items)==0:
+                item_id=1
+            else:
+                item_id=int(self.items[-1]['id'])+1
             item_holder['name'] = name.lower()
             item_holder['price'] = price
             item_holder['quantity'] = quantity
             item_holder['list_id'] = list_id
-            item_holder['id'] = len(self.items)+1
+            item_holder['id'] = item_id
             self.items.append(item_holder)
             return "success"
         else:
             return "blank_entry"
 
     #handle updates on items
-    def update_item(self, item_id, uname,uprice,uquantity):
+    def update_items(self, item_id, uname,uprice,uquantity):
         counter=0
         for i in self.items:
             if int(i['id'])==int(item_id):
