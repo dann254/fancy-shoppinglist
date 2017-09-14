@@ -61,6 +61,34 @@ class ShoppinglistTest(unittest.TestCase):
     def failed_list_creation_test(self):
         result = self.list_manager.create_new_shoppinglist("", "")
         self.assertFalse("success"==result)
+    #test 9
+    #this is a test for list deletion
+    def shoppinglist_deletion_test(self):
+        self.list_manager.create_new_shoppinglist("kitchenware", "user")
+        result = self.list_manager.delete_list("1")
+        self.assertTrue("success"==result)
+    #test 10
+    #this is a test for list Share status change
+    def share_test(self):
+        self.list_manager.create_new_shoppinglist("kitchenware", "user")
+        result = self.list_manager.share_shoppinglist("1")
+        result2 = self.list_manager.share_shoppinglist("1")
+        self.assertTrue("success"==result)
+        self.assertTrue("success"==result)
+
+    #test 11
+    #this is a test for list update
+    def shoppinglist_update_test(self):
+        self.list_manager.create_new_shoppinglist("kitchenware", "user")
+        result = self.list_manager.update_shoppinglist("1", "cutlery")
+        self.assertTrue("success"==result)
+
+    #test 12
+    #this is a test for zoning a shoppinglist
+    def shoppinglist_update_test(self):
+        self.list_manager.create_new_shoppinglist("kitchenware", "user")
+        result = self.list_manager.update_zone("1", "adlife")
+        self.assertTrue("success"==result)
 
 if __name__ == '__main__':
     unittest.main()
