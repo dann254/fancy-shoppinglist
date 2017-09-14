@@ -24,3 +24,26 @@ this are the test used on the program.
 
 ## test 8
  this is a test for unsuccessful list creation
+
+##test 9
+   this is a test for list deletion
+##test 10
+   this is a test for list Share status change
+
+##test 11
+   this is a test for list update
+
+##test 12
+   this is a test for zoning a shoppinglist
+
+##test 13
+   this is a test for friend addition and unfriending
+
+##test 14
+   this is a test for zone addition and deletion
+
+##test 15
+   this is a test for item addition and deletion
+
+##test 16
+   this is a test for item update
