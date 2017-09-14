@@ -29,7 +29,7 @@ def signup():
         email = request.form['email']
         password = request.form['password']
         confirm_pass = request.form['cpassword']
-        if not re.match(r"(^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-z]+$)", email):
+        if not re.match(r"(^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-z.]+$)", email):
             flash('please enter a valid email', 'error')
             return render_template('signup.html')
         if len(password)<6 and len(confirm_pass)<6:
