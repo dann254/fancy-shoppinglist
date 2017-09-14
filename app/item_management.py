@@ -18,6 +18,18 @@ class ItemManager(object):
         else:
             return "blank_entry"
 
+    #handle updates on items
+    def update_item(self, item_id, uname,uprice,uquantity):
+        counter=0
+        for i in self.items:
+            if int(i['id'])==int(item_id):
+                self.items[counter]['name']=uname
+                self.items[counter]['price']=uprice
+                self.items[counter]['quantity']=uquantity
+                return "success"
+            counter=counter+1
+
+        return "error"
 
     #handle return all items
     def return_items(self):

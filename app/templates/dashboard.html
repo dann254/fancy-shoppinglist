@@ -13,7 +13,7 @@
             {% for i in slist %}
             {%if i['ownername'] == username%}
             <div class="btn-group col-lg-12">
-                <a class="btn btn-success col-lg-8">{{i['name']}}</a>
+                <a class="btn btn-success col-lg-8 nullhover">{{i['name']}}</a>
                 <a href="{{url_for('dash.shoppinglist', list_id=i['id'])}}" class="btn btn-primary col-lg-2">View</a>
 
                 {%if i['shared'] == False%}
@@ -28,7 +28,7 @@
               {%if i['ownername'] != username and i['shared'] == True%}
               {%if i['ownername'] in my_buddies %}
               <div class="btn-group col-lg-12">
-                  <a class="btn btn-warning col-lg-8"><span class="" style="float:left;"><i class="glyphicon glyphicon-user"> </i> {{i['ownername']}}</span>{{i['name']}}</a>
+                  <a class="btn btn-warning col-lg-8 nullhover"><span class="" style="float:left;"><i class="glyphicon glyphicon-user"> </i> {{i['ownername']}}</span>{{i['name']}}</a>
 
                   <a  href="{{url_for('dash.buddyshoppinglist', list_id=i['id'])}}" class="btn btn-primary col-lg-4">view</a>
                 </div><br><br>
@@ -50,8 +50,8 @@
             {% for i in blist %}
             {%if i[username]%}
             <div class="btn-group col-lg-12">
-                <a class="btn btn-warning col-lg-8">{{ i[username]}}</a>
-                <a href="{{url_for('dash.delete_buddy', buddy=i[username])}}" class="btn btn-danger col-lg-4">unfriend</a>
+                <a class="btn btn-warning col-lg-8 nullhover">{{ i[username]}}</a>
+                <a href="{{url_for('dash.delete_buddy', buddy=i[username])}}" class="btn btn-danger col-lg-4" onclick="return confirm('Unfriend ({{i[username]}})?')">unfriend</a>
               </div><br><br>
 
               {%endif%}
@@ -70,7 +70,10 @@
 
                 {% for i in zlist %}
                 {%if i[username]%}
-                <i class="btn btn-primary col-lg-12 col-md-12 col-sm-12 col-xs-12"><i class="col-lg-8 col-md-8 col-sm-8 col-xs-8">{{i[username]}}</i> <a href="{{url_for('dash.delete_zone', zone=i[username])}}" style="color:red;" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">delete</a></i><br><br>
+                <div class="btn-group col-lg-12">
+                    <a class="btn btn-info col-lg-8 nullhover">{{ i[username]}}</a>
+                    <a href="{{url_for('dash.delete_zone', zone=i[username])}}" class="btn btn-danger col-lg-4" onclick="return confirm('DELETE zone({{i[username]}})?')">delete</a>
+                  </div><br><br>
                 {%endif%}
                 {%endfor%}
           </div>

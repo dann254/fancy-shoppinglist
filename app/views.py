@@ -134,15 +134,10 @@ def shoppinglist(list_id):
             try:
 
                 if int(i['id'])==int(list_id):
-                    if str(i['ownername'])== str(session['username']):
+                    zlist = zone_handler.return_zones()
 
-                        zlist = zone_handler.return_zones()
-
-                        ilist = item_handler.return_items()
-                        return render_template('shoppinglist.html', username=session['username'],slist=i, zlist=zlist, ilist=ilist)
-                    else:
-                        flash("Anauthorized", 'error')
-                        return redirect(url_for('dash.dashboard'))
+                    ilist = item_handler.return_items()
+                    return render_template('shoppinglist.html', username=session['username'],slist=i, zlist=zlist, ilist=ilist)
             except Exception as e:
                 flash(str(e), 'error')
         flash('shoppinglist not found', 'error')

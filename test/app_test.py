@@ -4,6 +4,9 @@ import unittest
 # import all the required classes for testing
 from app.user_management import UserManager
 from app.list_management import ListManager
+from app.buddy_management import BuddyManager
+from app.zone_management import ZoneManager
+from app.item_management import ItemManager
 
 # these are the tests for user registrations
 class RegisterTest(unittest.TestCase):
@@ -74,7 +77,7 @@ class ShoppinglistTest(unittest.TestCase):
         result = self.list_manager.share_shoppinglist("1")
         result2 = self.list_manager.share_shoppinglist("1")
         self.assertTrue("success"==result)
-        self.assertTrue("success"==result)
+        self.assertTrue("success"==result2)
 
     #test 11
     #this is a test for list update
@@ -85,9 +88,55 @@ class ShoppinglistTest(unittest.TestCase):
 
     #test 12
     #this is a test for zoning a shoppinglist
-    def shoppinglist_update_test(self):
+    def shoppinglist_zoning_test(self):
         self.list_manager.create_new_shoppinglist("kitchenware", "user")
         result = self.list_manager.update_zone("1", "adlife")
+        self.assertTrue("success"==result)
+
+# this is a test for buddies
+class BuddyTest(unittest.TestCase):
+    def setUp(self):
+        self.user_manager=UserManager()
+        self.buddy_manager=BuddyManager()
+    #test 13
+    #this is a test for friend addition and unfriending
+    def add_and_unfriend_test(self):
+        self.user_manager.register_new_user("user","user@mail","monkey", "monkey")
+        self.user_manager.register_new_user("user2","user2@mail","monkey", "monkey")
+        result = self.buddy_manager.add_new_buddy("user","user2")
+        result2 = self.buddy_manager.add_new_buddy("user","user2")
+        self.assertTrue("success"==result)
+        self.assertTrue("success"==result2)
+
+# this is a test for Zones
+class ZoneTest(unittest.TestCase):
+    def setUp(self):
+        self.zone_manager=ZoneManager()
+    #test 14
+    #this is a test for zone addition and deletion
+    def add_and_delete_zone_test(self):
+        result = self.zone_manager.create_new_zone("user","adlife")
+        result2 = self.zone_manager.delete_zone("user","adlife")
+        self.assertTrue("success"==result)
+        self.assertTrue("success"==result2)
+
+# this are tests for items
+class ItemTest(unittest.TestCase):
+    def setUp(self):
+        self.item_manager=ItemManager()
+    #test 15
+    #this is a test for item addition and deletion
+    def add_and_delete_item_test(self):
+        result = self.item_manager.create_new_item("item1","20","1","1")
+        result2 = self.item_manager.delete_item("1")
+        self.assertTrue("success"==result)
+        self.assertTrue("success"==result2)
+
+    #test 16
+    #this is a test for item update
+    def update_item_test(self):
+        self.item_manager.create_new_item("item1","20","1","1")
+        result = self.item_manager.update_item("1", "item_updated","65","3")
         self.assertTrue("success"==result)
 
 if __name__ == '__main__':

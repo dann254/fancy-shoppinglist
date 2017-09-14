@@ -99,3 +99,6 @@ body, html {
 .panel-footer>a:hover{
   background: lightblue;
 }
+.nullhover{
+  pointer-events: none;
+}
